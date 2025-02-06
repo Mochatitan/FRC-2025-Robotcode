@@ -1,5 +1,12 @@
 package frc.robot;
 
+import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.commands.elevatorUp;
+import frc.robot.commands.elevatorDown;
+import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.commands.coralIntake;
+import frc.robot.commands.coralPlace;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.DeferredCommand;
@@ -29,19 +36,24 @@ public class RobotContainer {
   boolean setupSwerve = true;
   CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
   DriveSubsystem m_drive;
+  ElevatorSubsystem m_elevator;
+  CoralSubsystem m_coral;
   SendableChooser<Command> autoChooser;
 
   public RobotContainer() {
 
     m_drive = new DriveSubsystem();
-
-    autoChooser = AutoBuilder.buildAutoChooser("2 note front");
+    m_elevator = new ElevatorSubsystem();
+    NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.2));
+    NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
+    NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
+    NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
+   
     SmartDashboard.putData("Auto Chooser", autoChooser);
 
+    
     m_drive.setDefaultCommand(
         m_drive.driveCommand(m_driverController::getLeftX, m_driverController::getLeftY, m_driverController::getRightX));
-
-      
 
     configureBindings();
   }
@@ -49,6 +61,12 @@ public class RobotContainer {
   private void configureBindings() {
       //Sets zero
       m_driverController.start().onTrue(m_drive.zeroGyro());
+
+      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
+      m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, 0.2));
+      m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
+      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
+
   }
 
   public Command getAutonomousCommand() {

@@ -15,10 +15,17 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
+
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
     public static final double driveDeadband = 0.05;
+  }
+
+  public class NonChassisConstants {
+    public static int elevatorMotorID1 = 9;
+    public static int elevatorMotorID2 = 10;
+    public static int intakeMotorID = 11;    
   }
 
   public static class ModuleConstants {

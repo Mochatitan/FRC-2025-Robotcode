@@ -12,12 +12,11 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-public class ElevatorSubsystem extends SubsystemBase {
+public class CoralSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  public SparkMax elevatorMotor1 = new SparkMax(NonChassisConstants.elevatorMotorID1, MotorType.kBrushless);
-  public SparkMax elevatorMotor2 = new SparkMax(NonChassisConstants.elevatorMotorID2, MotorType.kBrushless);
+  public SparkMax intakeMotor = new SparkMax(NonChassisConstants.intakeMotorID, MotorType.kBrushless);
 
-  public ElevatorSubsystem() {
+  public CoralSubsystem() {
   
   }
   @Override
@@ -25,13 +24,11 @@ public class ElevatorSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void elevatorUp(double power) {
-    elevatorMotor1.set(power);
-    elevatorMotor2.set(power);
+  public void coralIntake(double power) {
+    intakeMotor.set(power);
   }
 
-  public void elevatorDown(double power) {
-    elevatorMotor1.set(power);
-    elevatorMotor2.set(power);
+  public void coralPlace(double power) {
+    intakeMotor.set(power);
   }
 }

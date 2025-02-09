@@ -8,7 +8,6 @@ import frc.robot.Constants.NonChassisConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -26,9 +25,11 @@ public class CoralSubsystem extends SubsystemBase {
 
   public void coralIntake(double power) {
     intakeMotor.set(power);
+    System.out.println("Coral Intake Power: " + power);
   }
 
   public void coralPlace(double power) {
     intakeMotor.set(power);
+    System.out.println("Coral Placing Power: " + power);
   }
 }

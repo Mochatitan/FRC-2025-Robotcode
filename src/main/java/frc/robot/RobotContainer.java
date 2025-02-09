@@ -44,6 +44,7 @@ public class RobotContainer {
 
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
+    m_coral = new CoralSubsystem();
     NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.2));
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
@@ -63,7 +64,7 @@ public class RobotContainer {
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
       m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
-      m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, 0.2));
+      m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, -0.2));
       m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
       m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
 

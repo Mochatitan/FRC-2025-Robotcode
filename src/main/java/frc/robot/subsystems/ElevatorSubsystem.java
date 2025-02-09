@@ -8,7 +8,6 @@ import frc.robot.Constants.NonChassisConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -28,10 +27,12 @@ public class ElevatorSubsystem extends SubsystemBase {
   public void elevatorUp(double power) {
     elevatorMotor1.set(power);
     elevatorMotor2.set(power);
+    System.out.println("Elevator Up Power: " + power);
   }
 
   public void elevatorDown(double power) {
     elevatorMotor1.set(power);
     elevatorMotor2.set(power);
+    System.out.println("Elevator Down Power: " + power);
   }
 }

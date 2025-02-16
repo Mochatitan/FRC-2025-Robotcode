@@ -50,7 +50,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
    
-    SmartDashboard.putData("Auto Chooser", autoChooser);
+    //SmartDashboard.putData("Auto Chooser", autoChooser);
 
     
     m_drive.setDefaultCommand(

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.function.DoubleSupplier;
 
 import com.pathplanner.lib.config.PIDConstants;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.auto.CommandUtil;
 import com.pathplanner.lib.auto.AutoBuilder;
 
@@ -33,78 +35,54 @@ import swervelib.telemetry.SwerveDriveTelemetry;
 import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+
 public class DriveSubsystem extends SubsystemBase {
 
-  /* 
-  !!! DOCUMENTATION I USED TO MAKE THIS !!!
-  https://yagsl.gitbook.io/yagsl/configuring-yagsl/code-setup
-  https://yagsl.gitbook.io/yagsl/bringing-up-swerve/creating-your-first-configuration
-  https://github.com/BroncBotz3481/YAGSL-Configs/tree/main
-
-  EDIT CAN IDS AND OTHER MODULE CONSTANTS IN THE DEPLOY DIRECTORY (YAGSL-Test\src\main\deploy\swerve\modules)
-  
-  */ 
-  
   public SwerveDrive swerveDrive;
 
   SwerveDriveOdometry m_odometry;
   Field2d m_field = new Field2d();
 
-  
-  /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    File swerveJsons = new File(Filesystem.getDeployDirectory(), "swerve");
+    // All other subsystem initialization
+    // ...
 
-    zeroGyro();
-
-  SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
-    
-    try {
-      swerveDrive = new SwerveParser(swerveJsons).createSwerveDrive(ModuleConstants.maxSpeed);
+    // Load the RobotConfig from the GUI settings. You should probably
+    // store this in your Constants file
+    RobotConfig config;
+    try{
+      config = RobotConfig.fromGUISettings();
+    } catch (Exception e) {
+      // Handle exception as needed
+      e.printStackTrace();
     }
-    catch (IOException exception) {
-      DriverStation.reportError("Error with loading config: ", exception.getStackTrace());
-    }
 
-    // AutoBuilder.configureHolonomic(
-    //         this::getPose, // Robot pose supplier
-    //         this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
-    //         this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
-    //         this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
-    //         new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-    //                 new PIDConstants(4, 0.0, 0.0), // Translation PID constants
-    //                 new PIDConstants(4, 0.0, 0.0), // Rotation PID constants
-    //                 ModuleConstants.maxSpeed, // Max module speed, in m/s
-    //                 0.356, // Drive base radius in meters. Distance from robot center to furthest module.
-                
-    //                 new ReplanningConfig() // Default path replanning config. See the API for the options here
-    //         ),
-    //         () -> {
-    //           // Boolean supplier that controls when the path will be mirrored for the red alliance
-    //           // This will flip the path being followed to the red side of the field.
-    //           // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+    // Configure AutoBuilder last
+    AutoBuilder.configure(
+            this::getPose, // Robot pose supplier
+            this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
+            this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+            (speeds, feedforwards) -> driveRobotRelative(speeds), // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds. Also optionally outputs individual module feedforwards
+            new PPHolonomicDriveController( // PPHolonomicController is the built in path following controller for holonomic drive trains
+                    new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
+                    new PIDConstants(5.0, 0.0, 0.0) // Rotation PID constants
+            ),
+            config, // The robot configuration
+            () -> {
+              // Boolean supplier that controls when the path will be mirrored for the red alliance
+              // This will flip the path being followed to the red side of the field.
+              // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 
-    //           var alliance = DriverStation.getAlliance();
-    //           if (alliance.isPresent()) {
-    //             return alliance.get() == DriverStation.Alliance.Red;
-    //           }
-    //           return false;
-    //         },
-    //         this // Reference to this subsystem to set requirements
-    // );
-    SmartDashboard.putData("Field",m_field);
+              var alliance = DriverStation.getAlliance();
+              if (alliance.isPresent()) {
+                return alliance.get() == DriverStation.Alliance.Red;
+              }
+              return false;
+            },
+            this // Reference to this subsystem to set requirements
+    );
   }
-
-  /**
-   * Command to drive the robot using translative values and heading as angular velocity.
-   *
-   * @param translationX     Translation in the X direction.
-   * @param tran
-   * 
-   * slationY     Translation in the Y direction.
-   * @param angularRotationX Rotation of the robot to set
-   * @return Drive command.
-   */
+        
   public Command driveCommand(DoubleSupplier translationX, DoubleSupplier translationY, DoubleSupplier angularRotationX)
   {
     return run(() -> {
@@ -121,7 +99,7 @@ public class DriveSubsystem extends SubsystemBase {
                         true,
                         false);
     });
-  }
+  };
 
 
   @Override
@@ -132,7 +110,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public Command zeroGyro() {
     return new InstantCommand(() ->
-    swerveDrive.zeroGyro());
+    this.swerveDrive.zeroGyro());
   }
 
   public Pose2d getPose() {
@@ -141,16 +119,16 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void resetPose(Pose2d initialHolonomicPose)
   {
-    swerveDrive.resetOdometry(initialHolonomicPose);
+    this.swerveDrive.resetOdometry(initialHolonomicPose);
   }
 
   public ChassisSpeeds getRobotRelativeSpeeds()
   {
-    return swerveDrive.getRobotVelocity();
+    return this.swerveDrive.getRobotVelocity();
   }
 
   public void driveRobotRelative(ChassisSpeeds velocity)
   {
-    swerveDrive.drive(velocity);
+    this.swerveDrive.drive(velocity);
   }
 }

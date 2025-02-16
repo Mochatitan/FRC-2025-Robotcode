@@ -16,6 +16,11 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
  * constants are needed, to reduce verbosity.
  */
 
+//This is Phys Properties Varibles
+//"drive": 0.047286787200699704,
+//"angle": 16.8
+
+
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
@@ -23,9 +28,9 @@ public final class Constants {
   }
 
   public class NonChassisConstants {
-    public static int elevatorMotorID1 = 9;
-    public static int elevatorMotorID2 = 10;
-    public static int intakeMotorID = 11;    
+    public static int elevatorMotorID1 = 12;
+    public static int elevatorMotorID2 = 14;
+    public static int intakeMotorID = 16;    
   }
 
   public static class ModuleConstants {

@@ -5,9 +5,12 @@
 package frc.robot.subsystems;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.DoubleSupplier;
 
+import com.pathplanner.lib.config.ModuleConfig;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
@@ -21,12 +24,14 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
+import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.Constants.ModuleConstants;
 import frc.robot.Constants.OperatorConstants;
 import swervelib.SwerveDrive;
@@ -43,19 +48,30 @@ public class DriveSubsystem extends SubsystemBase {
   SwerveDriveOdometry m_odometry;
   Field2d m_field = new Field2d();
 
-  public DriveSubsystem() {
+
+  public DriveSubsystem(){
     // All other subsystem initialization
     // ...
 
+    //FileReader test = new FileReader(new File(Filesystem.getDeployDirectory(), "pathplanner/settings.json"));
+    //if (test != null){
+
+    ModuleConfig moduleConfig = new ModuleConfig(
+            0.048, 5.45, 10.0, DCMotor.getNEO(8), 40.0, 8);
+
+      RobotConfig config = new RobotConfig(45.0, 6.883, moduleConfig, 0.28);
+      System.out.println(Filesystem.getDeployDirectory());
+    //}
     // Load the RobotConfig from the GUI settings. You should probably
     // store this in your Constants file
-    RobotConfig config;
-    try{
-      config = RobotConfig.fromGUISettings();
-    } catch (Exception e) {
-      // Handle exception as needed
-      e.printStackTrace();
-    }
+    // try {
+    //     RobotConfig config = RobotConfig.fromGUISettings();
+    //     } catch (Exception e) {
+    //     //Handle exception as needed
+    //     e.printStackTrace();
+    //   }
+       //Handle exception as needed
+
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -67,7 +83,7 @@ public class DriveSubsystem extends SubsystemBase {
                     new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
                     new PIDConstants(5.0, 0.0, 0.0) // Rotation PID constants
             ),
-            config, // The robot configuration
+            config,
             () -> {
               // Boolean supplier that controls when the path will be mirrored for the red alliance
               // This will flip the path being followed to the red side of the field.

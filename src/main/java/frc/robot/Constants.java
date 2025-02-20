@@ -18,40 +18,43 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
  * constants are needed, to reduce verbosity.
  */
 
-//This is Phys Properties Varibles
+//This is Physical Properties Varibles for swerve json file 
 //"drive": 0.047286787200699704,
 //"angle": 16.8
 
 
 public final class Constants {
-  public static class OperatorConstants {
+  public static class Operator {
     public static final int kDriverControllerPort = 0;
     public static final double driveDeadband = 0.05;
   }
 
-  public class NonChassisConstants {
-    public static int elevatorMotorID1 = 12;
-    public static int elevatorMotorID2 = 14;
-    public static int intakeMotorID = 16;    
+  public class NonChassis {
+    public static final int elevatorMotorID1 = 21;
+    public static final int elevatorMotorID2 = 22;
+    public static final int coralIntakeMotorID1 = 11;
+    public static final int coralIntakeMotorID2 = 12;   
+    public static final int coralPlaceMotorID3 = 13;   
+    public static final int coralPlaceMotorID4 = 14;       
   }
 
-  public static class ModuleConstants {
-        // The max free speed of the module
-        public static final double maxSpeed = 4.5;
-        //Lowerd from 4.5
+  public static class Drive {
+    // The max free speed of the module
+    public static final double maxSpeed = 4.5;
 
-        public static double trackWidth = 0.5588;
-        public static double wheelBase = 0.4826;
+    public static final double trackWidth = 0.5588;
+    public static final double wheelBase = 0.4826;
 
-        public static Translation2d frontLeftPosition = new Translation2d(trackWidth/2,wheelBase/2);
-        public static Translation2d frontRightPosition = new Translation2d(-trackWidth/2,wheelBase/2);
-        public static Translation2d backLeftPosition = new Translation2d(trackWidth/2,-wheelBase/2);
-        public static Translation2d backRightPosition = new Translation2d(-trackWidth/2,-wheelBase/2);
+    public static Translation2d frontLeftPosition = new Translation2d(trackWidth/2,wheelBase/2);
+    public static Translation2d frontRightPosition = new Translation2d(-trackWidth/2,wheelBase/2);
+    public static Translation2d backLeftPosition = new Translation2d(trackWidth/2,-wheelBase/2);
+    public static Translation2d backRightPosition = new Translation2d(-trackWidth/2,-wheelBase/2);
 
-        public static SwerveDriveKinematics driveKinematics = new SwerveDriveKinematics(frontLeftPosition,
-                                                                                frontRightPosition,
-                                                                                backLeftPosition,
-                                                                                backRightPosition);
-
+    public static SwerveDriveKinematics driveKinematics = new SwerveDriveKinematics(
+      frontLeftPosition,
+      frontRightPosition,
+      backLeftPosition,
+      backRightPosition
+    );
   }
 }

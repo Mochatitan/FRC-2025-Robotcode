@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
+
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,10 +29,15 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   @Override
-  public void robotInit() {
+  public void robotInit(){
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    try {
+      m_robotContainer = new RobotContainer();
+    } catch (IOException | ParseException e) {
+      // If this triggers it means for some reason is didn't read the swerve files right
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -45,6 +54,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    //This means that robotContainer takes over running the robot
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

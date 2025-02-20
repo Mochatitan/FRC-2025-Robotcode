@@ -22,6 +22,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.function.DoubleSupplier;
+import org.json.simple.parser.ParseException;
+import java.io.IOException;
 import java.util.function.BooleanSupplier;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -30,17 +32,16 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import java.util.function.BooleanSupplier;
 import frc.robot.Constants;
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.Operator;
 
 public class RobotContainer {
-  boolean setupSwerve = true;
-  CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
+  CommandXboxController m_driverController = new CommandXboxController(Operator.kDriverControllerPort);
   DriveSubsystem m_drive;
   ElevatorSubsystem m_elevator;
   CoralSubsystem m_coral;
   SendableChooser<Command> autoChooser;
 
-  public RobotContainer() {
+  public RobotContainer() throws IOException, ParseException{
 
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
@@ -50,17 +51,19 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
    
-    //SmartDashboard.putData("Auto Chooser", autoChooser);
+    autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
+    SmartDashboard.putData("Auto Chooser", autoChooser);
 
     
     m_drive.setDefaultCommand(
-        m_drive.driveCommand(m_driverController::getLeftX, m_driverController::getLeftY, m_driverController::getRightX));
+      m_drive.driveCommand(m_driverController::getLeftX, m_driverController::getLeftY, m_driverController::getRightX)
+    );
 
     configureBindings();
   }
 
   private void configureBindings() {
-      //Sets zero
+      //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
       m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
@@ -71,7 +74,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    //return new PathPlannerAuto("Shoot move shoot");
     return autoChooser.getSelected();
   }
 

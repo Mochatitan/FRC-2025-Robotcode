@@ -61,7 +61,7 @@ public class RobotContainer {
       //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
-      // 0.025 power up will hold the 2nd stage in place
+      // 0.025 power up will hold both stages or just 2nd stage in place
       // 0.2 power draws <20 amps at stall
       m_driverController.x().whileTrue(new elevatorUp(m_elevator, 0.025));
       m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.1));

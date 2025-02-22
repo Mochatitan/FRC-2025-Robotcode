@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.function.DoubleSupplier;
 
@@ -18,13 +19,11 @@ import com.pathplanner.lib.auto.AutoBuilder;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
-import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -33,8 +32,6 @@ import frc.robot.Constants.Drive;
 import frc.robot.Constants.Operator;
 import swervelib.SwerveDrive;
 import swervelib.parser.SwerveParser;
-import swervelib.telemetry.SwerveDriveTelemetry;
-import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 
@@ -47,10 +44,14 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public DriveSubsystem() throws IOException, ParseException{
+    File swerveJsons = new File(Filesystem.getDeployDirectory(), "swerve");
+
     // All other subsystem initialization
     // Load the RobotConfig from the GUI settings. You should probably
     // store this in your Constants file
     RobotConfig config = RobotConfig.fromGUISettings();
+    
+    swerveDrive = new SwerveParser(swerveJsons).createSwerveDrive(Drive.maxSpeed);
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -64,7 +65,7 @@ public class DriveSubsystem extends SubsystemBase {
       ),
       config,
       () -> {
-        // Boolean supplier that controls when the path will be mirrored for the red alliance
+        // Boolean supplier that controls when the path will be mirrored for the red alliancecontroller
         // This will flip the path being followed to the red side of the field.
         // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 

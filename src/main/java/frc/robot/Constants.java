@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import com.pathplanner.lib.config.RobotConfig;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 
@@ -30,12 +28,12 @@ public final class Constants {
   }
 
   public class NonChassis {
-    public static final int elevatorMotorID1 = 21;
-    public static final int elevatorMotorID2 = 22;
+    public static final int elevatorMotorID1 = 31;
+    public static final int elevatorMotorID2 = 32;
     public static final int coralIntakeMotorID1 = 11;
     public static final int coralIntakeMotorID2 = 12;   
-    public static final int coralPlaceMotorID3 = 13;   
-    public static final int coralPlaceMotorID4 = 14;       
+    // public static final int coralPlaceMotorID3 = 13;   
+    // public static final int coralPlaceMotorID4 = 14;       
   }
 
   public static class Drive {

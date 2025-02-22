@@ -5,32 +5,27 @@ import frc.robot.commands.elevatorUp;
 import frc.robot.commands.elevatorDown;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.commands.coralIntake;
-import frc.robot.commands.coralPlace;
+//import frc.robot.commands.coralPlace;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.DeferredCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.function.DoubleSupplier;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
-import java.util.function.BooleanSupplier;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
-import java.util.function.BooleanSupplier;
 import frc.robot.Constants;
 import frc.robot.Constants.Operator;
 
@@ -49,7 +44,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.2));
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
-    NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
+    //NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
    
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -66,10 +61,13 @@ public class RobotContainer {
       //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
-      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
-      m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, -0.2));
+      // 0.025 power up will hold the 2nd stage in place
+      // 0.2 power draws <20 amps at stall
+      m_driverController.x().whileTrue(new elevatorUp(m_elevator, 0.025));
+      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.1));
+      m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, -0.1));
       m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
-      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
+      //m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
 
   }
 

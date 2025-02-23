@@ -8,6 +8,7 @@ import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.commands.coralIntake;
 import frc.robot.commands.coralOuttake;
 import frc.robot.commands.coralPlace;
+import frc.robot.commands.coralReversePlace;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -37,12 +38,13 @@ public class RobotContainer {
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
     m_coral = new CoralSubsystem();
-    NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.2));
+    NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.3));
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
     NamedCommands.registerCommand("Elevator Hold", new elevatorHold(m_elevator, 0.025));
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Intake", new coralOuttake(m_coral, -0.2));
-    NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
+    NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
+    NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
    
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -65,11 +67,17 @@ public class RobotContainer {
       //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
-      m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.1));
-      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.1));
+      m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
+      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.2));
+
+
       m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
+      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, 0.15));
+      m_driverController.a().whileTrue(new coralPlace(m_coral, 0.3));
+
+      //brings in coral
       m_driverController.y().whileTrue(new coralOuttake(m_coral, -0.2));
-      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
+      m_driverController.x().whileTrue(new coralReversePlace(m_coral, -0.1));
 
   }
 

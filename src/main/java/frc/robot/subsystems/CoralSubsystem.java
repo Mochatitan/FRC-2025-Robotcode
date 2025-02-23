@@ -38,7 +38,13 @@ public class CoralSubsystem extends SubsystemBase {
 
   public void coralPlace(double power) {
     placeMotor3.set(power);
-    placeMotor4.set(power);
+    placeMotor4.set(-power);
     System.out.println("Coral Placing Power: " + power);
+  }
+
+  public void coralReversePlace(double power) {
+    placeMotor3.set(power);
+    placeMotor4.set(-power);
+    System.out.println("Coral Reverse Placing Power: " + power);
   }
 }

@@ -7,11 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CoralSubsystem;
 
-public class coralPlace extends Command {
+public class coralOuttake extends Command {
   private CoralSubsystem m_coral;
   private double m_power;
-
-  public coralPlace(CoralSubsystem coral, double power) {
+  public coralOuttake(CoralSubsystem coral, double power) {
     m_coral = coral;
     m_power = power;
     addRequirements(m_coral);
@@ -25,13 +24,13 @@ public class coralPlace extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_coral.coralPlace(m_power);
+    m_coral.coralOuttake(m_power);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_coral.coralPlace(0);
+    m_coral.coralOuttake(0);
   }
 
   // Returns true when the command should end.

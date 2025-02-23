@@ -5,7 +5,8 @@ import frc.robot.commands.elevatorUp;
 import frc.robot.commands.elevatorDown;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.commands.coralIntake;
-//import frc.robot.commands.coralPlace;
+import frc.robot.commands.coralOuttake;
+import frc.robot.commands.coralPlace;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -44,7 +45,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.2));
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
-    //NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
+    NamedCommands.registerCommand("Coral Intake", new coralOuttake(m_coral, -0.2));
+    NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, -0.2));
    
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -67,7 +69,8 @@ public class RobotContainer {
       m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.1));
       m_driverController.rightTrigger().whileTrue(new elevatorDown(m_elevator, -0.1));
       m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
-      //m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
+      m_driverController.rightBumper().whileTrue(new coralOuttake(m_coral, -0.2));
+      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, -0.2));
 
   }
 

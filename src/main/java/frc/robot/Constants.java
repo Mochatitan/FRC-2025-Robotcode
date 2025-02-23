@@ -32,8 +32,8 @@ public final class Constants {
     public static final int elevatorMotorID2 = 32;
     public static final int coralIntakeMotorID1 = 11;
     public static final int coralIntakeMotorID2 = 12;   
-    // public static final int coralPlaceMotorID3 = 13;   
-    // public static final int coralPlaceMotorID4 = 14;       
+    public static final int coralPlaceMotorID3 = 13;   
+    public static final int coralPlaceMotorID4 = 14;       
   }
 
   public static class Drive {

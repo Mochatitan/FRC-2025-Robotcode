@@ -5,9 +5,13 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.spark.SparkMax;
+
+import java.util.function.DoubleSupplier;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
@@ -33,5 +37,12 @@ public class ElevatorSubsystem extends SubsystemBase {
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
     System.out.println("Elevator Down Power: " + power);
+  }
+
+  public void elevatorHold(double power)
+  {
+    elevatorMotor1.set(power);
+    elevatorMotor2.set(-power);
+    System.out.println("Elevator Hold Power: " + power);
   }
 }

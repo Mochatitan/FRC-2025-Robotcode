@@ -25,12 +25,10 @@ import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.Drive;
 import frc.robot.Constants.Operator;
 import swervelib.SwerveDrive;
 import swervelib.parser.SwerveParser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -39,6 +37,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   SwerveDriveOdometry m_odometry;
   Field2d m_field = new Field2d();
+  double creepMode;
 
 
   public DriveSubsystem() throws IOException, ParseException{
@@ -49,7 +48,11 @@ public class DriveSubsystem extends SubsystemBase {
     // store this in your Constants file
     RobotConfig config = RobotConfig.fromGUISettings();
     
+    //Makes the swerve drive with Json files
     swerveDrive = new SwerveParser(swerveJsons).createSwerveDrive(Drive.maxSpeed);
+
+    //Sets creep mode to base value
+    creepMode = 2.0;
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -87,9 +90,9 @@ public class DriveSubsystem extends SubsystemBase {
       y = Math.pow(y, 3);
       double angle = -MathUtil.applyDeadband(angularRotationX.getAsDouble(), Operator.driveDeadband);
       angle = Math.pow(angle,3);
-      swerveDrive.drive(new Translation2d(y * swerveDrive.getMaximumChassisVelocity()/6,
-                        x * swerveDrive.getMaximumChassisVelocity()/6),
-                        angle * swerveDrive.getMaximumChassisAngularVelocity()/4,
+      swerveDrive.drive(new Translation2d(y * swerveDrive.getMaximumChassisVelocity()/creepMode,
+                        x * swerveDrive.getMaximumChassisVelocity()/creepMode),
+                        angle * swerveDrive.getMaximumChassisAngularVelocity()/creepMode,
                         true,
                         false);
     });
@@ -101,6 +104,16 @@ public class DriveSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     m_field.setRobotPose(getPose());
   }
+
+  public void slowDrive(boolean on) {
+    if (on){
+    creepMode = 4.5;
+    }
+    else {
+      creepMode = 2.0;
+    }
+  }
+
 
   public Command zeroGyro() {
     return new InstantCommand(() ->

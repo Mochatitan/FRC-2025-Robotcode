@@ -9,6 +9,7 @@ import frc.robot.commands.coralIntake;
 import frc.robot.commands.coralOuttake;
 import frc.robot.commands.coralPlace;
 import frc.robot.commands.coralReversePlace;
+import frc.robot.commands.creepMode;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -21,9 +22,7 @@ import java.io.IOException;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
 
-import frc.robot.Constants;
 import frc.robot.Constants.Operator;
 
 public class RobotContainer {
@@ -45,6 +44,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Intake", new coralOuttake(m_coral, -0.2));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
+    NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
    
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -56,9 +56,7 @@ public class RobotContainer {
    
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
-    m_elevator.setDefaultCommand(
-    new elevatorHold(m_elevator, 0.025)
-    );
+    m_elevator.setDefaultCommand(new elevatorHold(m_elevator, 0.025));
 
     configureBindings();
   }
@@ -67,18 +65,22 @@ public class RobotContainer {
       //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
-      m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
-      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.2));
+      m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
+      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
+      m_driverController.rightBumper().whileTrue(new elevatorDown(m_elevator, -0.2));
+      m_driverController.leftBumper().whileTrue(new elevatorDown(m_elevator, -0.4));
 
-
-      m_driverController.leftBumper().whileTrue(new coralIntake(m_coral, 0.2));
-      m_driverController.rightBumper().whileTrue(new coralPlace(m_coral, 0.15));
+      
+      m_driverController.b().whileTrue(new coralIntake(m_coral, 0.2));
       m_driverController.a().whileTrue(new coralPlace(m_coral, 0.3));
 
-      //brings in coral
+      //Reverse coral direction
       m_driverController.y().whileTrue(new coralOuttake(m_coral, -0.2));
       m_driverController.x().whileTrue(new coralReversePlace(m_coral, -0.1));
 
+      //Creep mode means it drives slower
+      //pov equals dpad
+      m_driverController.leftStick().whileTrue(new creepMode(m_drive));
   }
 
   public Command getAutonomousCommand() {

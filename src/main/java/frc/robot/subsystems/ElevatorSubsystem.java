@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.spark.SparkMax;
@@ -13,6 +15,8 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor1 = new SparkMax(Constants.NonChassis.elevatorMotorID1, MotorType.kBrushless);
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
+
+  DigitalInput input = new DigitalInput(1);
 
   public ElevatorSubsystem() {
   
@@ -24,9 +28,14 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void elevatorUp(double power) {
+    if (input.get()){
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
     System.out.println("Elevator Up Power: " + power);
+    }
+    else {
+    System.out.println("Elevator Blocked By Coral");
+    }
   }
 
   public void elevatorDown(double power) {
@@ -45,5 +54,10 @@ public class ElevatorSubsystem extends SubsystemBase {
   {
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
+  }
+
+  public void checkPhotoeye()
+  {
+    SmartDashboard.putBoolean("Photoeye",input.get());
   }
 }

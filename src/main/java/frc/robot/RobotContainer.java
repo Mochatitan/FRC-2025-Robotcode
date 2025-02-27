@@ -5,6 +5,7 @@ import frc.robot.commands.elevatorUp;
 import frc.robot.commands.elevatorDown;
 import frc.robot.commands.elevatorHold;
 import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.commands.checkPhotoeye;
 import frc.robot.commands.coralIntake;
 import frc.robot.commands.coralOuttake;
 import frc.robot.commands.coralPlace;
@@ -45,6 +46,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
+    NamedCommands.registerCommand("Check for Photoeye", new checkPhotoeye(m_elevator));
    
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -57,6 +59,7 @@ public class RobotContainer {
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
     m_elevator.setDefaultCommand(new elevatorHold(m_elevator, 0.025));
+    m_elevator.setDefaultCommand(new checkPhotoeye(m_elevator));
 
     configureBindings();
   }

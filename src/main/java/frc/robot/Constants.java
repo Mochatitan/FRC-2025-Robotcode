@@ -41,7 +41,7 @@ public final class Constants {
     public static final double maxSpeed = 4.5;
 
     public static final double trackWidth = 0.5588;
-    public static final double wheelBase = 0.4826;
+    public static final double wheelBase = 0.5588;
 
     public static Translation2d frontLeftPosition = new Translation2d(trackWidth/2,wheelBase/2);
     public static Translation2d frontRightPosition = new Translation2d(-trackWidth/2,wheelBase/2);

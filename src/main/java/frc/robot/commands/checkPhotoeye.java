@@ -11,7 +11,6 @@ public class checkPhotoeye extends Command {
   private ElevatorSubsystem m_elevator;
   public checkPhotoeye(ElevatorSubsystem elevator) {
     m_elevator = elevator;
-    addRequirements(m_elevator);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

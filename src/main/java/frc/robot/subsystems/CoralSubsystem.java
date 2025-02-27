@@ -30,7 +30,7 @@ public class CoralSubsystem extends SubsystemBase {
     System.out.println("Coral Intake Power: " + power);
   }
 
-  public void coralOuttake(double power) {
+  public void coralReverseIntake(double power) {
     intakeMotor1.set(power);
     intakeMotor2.set(-power);
     System.out.println("Coral Outtake Power: " + power);

@@ -7,7 +7,7 @@ import frc.robot.commands.elevatorHold;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.commands.checkPhotoeye;
 import frc.robot.commands.coralIntake;
-import frc.robot.commands.coralOuttake;
+import frc.robot.commands.coralReverseIntake;
 import frc.robot.commands.coralPlace;
 import frc.robot.commands.coralReversePlace;
 import frc.robot.commands.creepMode;
@@ -42,7 +42,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.2));
     NamedCommands.registerCommand("Elevator Hold", new elevatorHold(m_elevator, 0.025));
     NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
-    NamedCommands.registerCommand("Coral Intake", new coralOuttake(m_coral, -0.2));
+    NamedCommands.registerCommand("Coral Reverse Intake", new coralReverseIntake(m_coral, -0.2));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
@@ -69,17 +69,15 @@ public class RobotContainer {
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
       m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
-      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
-      m_driverController.rightBumper().whileTrue(new elevatorDown(m_elevator, -0.2));
-      m_driverController.leftBumper().whileTrue(new elevatorDown(m_elevator, -0.4));
+      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.1));
 
       
-      m_driverController.b().whileTrue(new coralIntake(m_coral, 0.2));
+      m_driverController.y().whileTrue(new coralIntake(m_coral, 0.2));
       m_driverController.a().whileTrue(new coralPlace(m_coral, 0.3));
 
       //Reverse coral direction
-      m_driverController.y().whileTrue(new coralOuttake(m_coral, -0.2));
-      m_driverController.x().whileTrue(new coralReversePlace(m_coral, -0.1));
+      m_driverController.x().whileTrue(new coralReversePlace(m_coral, -0.2));
+      m_driverController.b().whileTrue(new coralReversePlace(m_coral, -0.1));
 
       //Creep mode means it drives slower
       //pov equals dpad

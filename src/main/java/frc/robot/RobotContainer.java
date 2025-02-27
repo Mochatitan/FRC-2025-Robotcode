@@ -59,7 +59,6 @@ public class RobotContainer {
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
     m_elevator.setDefaultCommand(new elevatorHold(m_elevator, 0.025));
-    m_elevator.setDefaultCommand(new checkPhotoeye(m_elevator));
 
     configureBindings();
   }
@@ -69,8 +68,7 @@ public class RobotContainer {
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
       m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.2));
-      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.1));
-
+      m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.3));
       
       m_driverController.y().whileTrue(new coralIntake(m_coral, 0.2));
       m_driverController.a().whileTrue(new coralPlace(m_coral, 0.3));

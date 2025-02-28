@@ -51,7 +51,9 @@ public class RobotContainer {
     autoChooser = AutoBuilder.buildAutoChooser("Drive Foward");
     SmartDashboard.putData("Auto Chooser", autoChooser);
 
-    
+    SmartDashboard.putNumber("Elevator Up Power", 0.2);
+    SmartDashboard.putNumber("Elevator Down Power", -0.3);
+
     m_drive.setDefaultCommand(
       m_drive.driveCommand(m_driverController::getLeftX, m_driverController::getLeftY, m_driverController::getRightX)
     );

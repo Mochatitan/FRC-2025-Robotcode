@@ -52,7 +52,7 @@ public class DriveSubsystem extends SubsystemBase {
     swerveDrive = new SwerveParser(swerveJsons).createSwerveDrive(Drive.maxSpeed);
 
     //Sets creep mode to base value
-    creepMode = 2.0;
+    creepMode = 1.5;
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -110,7 +110,7 @@ public class DriveSubsystem extends SubsystemBase {
     creepMode = 4.5;
     }
     else {
-      creepMode = 2.0;
+      creepMode = 1.5;
     }
   }
 

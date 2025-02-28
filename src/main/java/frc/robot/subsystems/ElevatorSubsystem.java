@@ -48,7 +48,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   {
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
-    System.out.println("Elevator Hold Power: " + power);
+    //System.out.println("Elevator Hold Power: " + power);
   }
 
   public void elevatorStop(double power)

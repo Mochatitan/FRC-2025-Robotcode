@@ -11,6 +11,11 @@ import frc.robot.commands.coralReverseIntake;
 import frc.robot.commands.coralPlace;
 import frc.robot.commands.coralReversePlace;
 import frc.robot.commands.creepMode;
+import frc.robot.commands.autonCommands.ElevatorDownFromL4;
+import frc.robot.commands.autonCommands.ElevatorToL4;
+import frc.robot.commands.autonCommands.IntakeCoral;
+import frc.robot.commands.autonCommands.SpitCoral;
+
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -38,6 +43,10 @@ public class RobotContainer {
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
     m_coral = new CoralSubsystem();
+    NamedCommands.registerCommand("upToL4", new ElevatorToL4(m_elevator));
+    NamedCommands.registerCommand("downFromL4", new ElevatorDownFromL4(m_elevator));
+    NamedCommands.registerCommand("intakeCoral",new IntakeCoral(m_coral));
+    NamedCommands.registerCommand("spitCoral",new SpitCoral(m_coral));
     NamedCommands.registerCommand("Elevator Up", new elevatorUp(m_elevator, 0.3));
     NamedCommands.registerCommand("Elevator Down", new elevatorDown(m_elevator, -0.3));
     NamedCommands.registerCommand("Elevator Hold", new elevatorHold(m_elevator, 0.025));

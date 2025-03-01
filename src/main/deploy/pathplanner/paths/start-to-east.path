@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.2095,
-        "y": 5.4095
+        "x": 8.055737704918034,
+        "y": 0.530584016393442
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.999205381155862,
-        "y": 5.274310602171625
+        "x": 7.845443086073896,
+        "y": 0.39539461856506686
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "start-south"
     },
     {
       "anchor": {
-        "x": 6.1425,
-        "y": 4.2005
+        "x": 6.113729508196721,
+        "y": 4.019006147540983
       },
       "prevControl": {
-        "x": 6.372908843784517,
-        "y": 4.297514250014532
+        "x": 6.173668032786885,
+        "y": 3.6114241803278686
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef front"
     }
   ],
   "rotationTargets": [],
@@ -33,8 +33,8 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "Place on L4",
-      "waypointRelativePos": 1.0,
+      "name": "upToL4",
+      "waypointRelativePos": 0.2625830959164359,
       "endWaypointRelativePos": null,
       "command": {
         "type": "sequential",

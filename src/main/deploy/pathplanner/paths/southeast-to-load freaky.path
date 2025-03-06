@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.113729508196721,
-        "y": 4.019006147540983
+        "x": 4.9269467213114755,
+        "y": 2.9281249999999988
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.01280737704918,
-        "y": 1.789293032786885
+        "x": 3.4402624278407243,
+        "y": 2.113282871582997
       },
       "isLocked": false,
-      "linkedName": "Reef front"
+      "linkedName": "southeast"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 0.8302766393442619
       },
       "prevControl": {
-        "x": 3.6802254098360643,
-        "y": 0.7583504098360664
+        "x": 1.9539959016393442,
+        "y": 2.196875
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,10 +33,26 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "downFromL4",
-      "waypointRelativePos": 0,
+      "name": "start going down",
+      "waypointRelativePos": 0.01756885090218418,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorDown"
+        }
+      }
+    },
+    {
+      "name": "stop going down",
+      "waypointRelativePos": 0.35754985754985663,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorHold"
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -55,7 +71,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 179.104826289789
+    "rotation": 120.37912601136829
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

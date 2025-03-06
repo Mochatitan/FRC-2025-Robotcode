@@ -7,7 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "start-to-southeast"
+            "pathName": "start2-to-northeast"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upToL4"
           }
         },
         {
@@ -17,15 +23,15 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "southeast-to-load"
+            "name": "downFromL4"
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 1.0
+            "pathName": "northeast-to-load"
           }
         },
         {
@@ -37,7 +43,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "load-to-southwest"
+            "pathName": "load-to-northwest"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upToL4"
           }
         },
         {

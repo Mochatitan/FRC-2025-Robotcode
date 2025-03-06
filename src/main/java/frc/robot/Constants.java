@@ -34,9 +34,10 @@ public final class Constants {
     public static final int coralIntakeMotorID2 = 12;   
     public static final int coralPlaceMotorID3 = 13;   
     public static final int coralPlaceMotorID4 = 14;  
-    public static final double millisToL4 = 1000;   
-    public static final double millisToSpit = 300;
-    public static final double millisToIntake = 300;   
+    public static final double millisToL4 = 2710;   
+    public static final double millisDownL4 = 2100;
+    public static final double millisToSpit = 190;
+    public static final double millisToIntake = 800;   
   }
 
   public static class Drive {

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.1867827868858258,
-        "y": 0.9741290983593797
+        "x": 0.9590163934426229,
+        "y": 0.8302766393442619
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.186782786885826,
-        "y": 0.9741290983593798
+        "x": 1.612251892234203,
+        "y": 1.2773473595975218
       },
       "isLocked": false,
       "linkedName": "load"
     },
     {
       "anchor": {
-        "x": 3.668237704918033,
-        "y": 2.604456967213115
+        "x": 4.0638319672131145,
+        "y": 2.9640881147540985
       },
       "prevControl": {
-        "x": 3.2726434426229503,
-        "y": 1.7173668032786882
+        "x": 3.0809306506546834,
+        "y": 2.3042639743144666
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,10 +33,26 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "upToL4",
+      "name": "intake into outtake",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "spitCoral"
+        }
+      }
+    },
+    {
+      "name": "start going up",
+      "waypointRelativePos": 0.6101614434947754,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorUp"
+        }
+      }
     }
   ],
   "globalConstraints": {

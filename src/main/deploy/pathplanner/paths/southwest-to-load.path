@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.668237704918033,
-        "y": 2.604456967213115
+        "x": 4.0638319672131145,
+        "y": 2.9640881147540985
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8341188524590166,
-        "y": 1.6814036885245898
+        "x": 2.364158632193554,
+        "y": 1.9279549175128494
       },
       "isLocked": false,
       "linkedName": "southwest"
     },
     {
       "anchor": {
-        "x": 1.1867827868858258,
-        "y": 0.9741290983593797
+        "x": 0.9590163934426229,
+        "y": 0.8302766393442619
       },
       "prevControl": {
-        "x": 2.3975409836065573,
-        "y": 1.9691086065573766
+        "x": 2.2812012470105665,
+        "y": 1.6402919169791068
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,14 +31,7 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "downFromL4",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

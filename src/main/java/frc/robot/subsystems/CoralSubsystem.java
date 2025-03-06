@@ -47,4 +47,11 @@ public class CoralSubsystem extends SubsystemBase {
     placeMotor4.set(-power);
     System.out.println("Coral Reverse Placing Power: " + power);
   }
+
+  public void intakeAndSpit(double pow1,double pow2) {
+    placeMotor3.set(pow1);
+    placeMotor4.set(-pow1);
+    intakeMotor1.set(pow2);
+    intakeMotor2.set(-pow2);
+  }
 }

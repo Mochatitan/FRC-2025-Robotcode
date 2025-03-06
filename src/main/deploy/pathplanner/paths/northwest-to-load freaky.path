@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.9590163934426229,
-        "y": 0.8302766393442619
+        "x": 3.752151639344262,
+        "y": 5.013985655737705
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9590163934426226,
-        "y": 0.830276639344262
+        "x": 4.0598158620441245,
+        "y": 4.925193480150575
       },
       "isLocked": false,
-      "linkedName": "load"
+      "linkedName": "northwest"
     },
     {
       "anchor": {
-        "x": 2.8530737704918034,
-        "y": 4.030993852459016
+        "x": 1.1268442622950818,
+        "y": 7.159784836065573
       },
       "prevControl": {
-        "x": 2.2656762295081965,
-        "y": 2.9521004098360653
+        "x": 0.886703792955418,
+        "y": 7.314323130136968
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "west"
+      "linkedName": "top load"
     }
   ],
   "rotationTargets": [],
@@ -33,20 +33,31 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "all the way up",
-      "waypointRelativePos": 0,
+      "name": "elevatorDown",
+      "waypointRelativePos": 0.02326685660019227,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "upToL4"
+          "name": "elevatorDown"
+        }
+      }
+    },
+    {
+      "name": "elevatorHold",
+      "waypointRelativePos": 0.718423551756883,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorHold"
         }
       }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -54,13 +65,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -53.285797023953755
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 53.471000000000004
+    "rotation": -63.06047193619921
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

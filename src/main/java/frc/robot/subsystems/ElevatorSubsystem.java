@@ -38,6 +38,17 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
   }
 
+  public void elevatorUpFast(double power) {
+    if (input.get()){
+    elevatorMotor1.set(power+.5);
+    elevatorMotor2.set(-power-.5);
+    System.out.println("Elevator Up Power: " + power);
+    }
+    else {
+    System.out.println("Elevator Blocked By Coral");
+    }
+  }
+
   public void elevatorDown(double power) {
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
@@ -57,8 +68,9 @@ public class ElevatorSubsystem extends SubsystemBase {
     elevatorMotor2.set(-power);
   }
 
-  public void checkPhotoeye()
+  public boolean checkPhotoeye()
   {
     SmartDashboard.putBoolean("Photoeye",input.get());
+    return input.get();
   }
 }

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.113729508196721,
-        "y": 4.019006147540983
+        "x": 4.0638319672131145,
+        "y": 2.9640881147540985
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.01280737704918,
-        "y": 1.789293032786885
+        "x": 2.568983383629816,
+        "y": 1.9407018456341916
       },
       "isLocked": false,
-      "linkedName": "Reef front"
+      "linkedName": "southwest"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 0.8302766393442619
       },
       "prevControl": {
-        "x": 3.6802254098360643,
-        "y": 0.7583504098360664
+        "x": 1.8820696721311476,
+        "y": 2.2328381147540983
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,15 +33,31 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "downFromL4",
-      "waypointRelativePos": 0,
+      "name": "elevatorDown",
+      "waypointRelativePos": 0.015669515669517613,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorDown"
+        }
+      }
+    },
+    {
+      "name": "stop going down",
+      "waypointRelativePos": 0.8874643874643872,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorHold"
+        }
+      }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -55,7 +71,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 179.104826289789
+    "rotation": 59.99999999999999
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

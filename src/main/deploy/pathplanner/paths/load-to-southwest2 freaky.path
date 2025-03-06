@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9590163934426226,
-        "y": 0.830276639344262
+        "x": 1.5479220064885468,
+        "y": 1.2574109533918723
       },
       "isLocked": false,
       "linkedName": "load"
     },
     {
       "anchor": {
-        "x": 2.8530737704918034,
-        "y": 4.030993852459016
+        "x": 3.7401639344262296,
+        "y": 3.0719774590163933
       },
       "prevControl": {
-        "x": 2.2656762295081965,
-        "y": 2.9521004098360653
+        "x": 3.116803278688524,
+        "y": 1.9571209016393447
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "west"
+      "linkedName": "southwest2"
     }
   ],
   "rotationTargets": [],
@@ -33,20 +33,31 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "all the way up",
+      "name": "intake into outtake",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "upToL4"
+          "name": "spitCoral"
+        }
+      }
+    },
+    {
+      "name": "start going up",
+      "waypointRelativePos": 0.2226970560303902,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorUp"
         }
       }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -54,7 +65,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 60.80251395393552
   },
   "reversed": false,
   "folder": null,
@@ -62,5 +73,5 @@
     "velocity": 0,
     "rotation": 53.471000000000004
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

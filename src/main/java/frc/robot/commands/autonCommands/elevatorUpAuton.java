@@ -7,40 +7,25 @@ package frc.robot.commands.autonCommands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ElevatorSubsystem;
-import frc.robot.Constants;
 
-/* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class ElevatorToL4 extends Command {
-  /** Creates a new ElevatorToL4. */
+public class elevatorUpAuton extends Command {
   private ElevatorSubsystem m_elevator;
   private double m_power;
-  private double m_startTime;
-  private int m_freaky;
-  private double timeToGo;
-  public ElevatorToL4(ElevatorSubsystem elevator, int freaky) {
+  public elevatorUpAuton(ElevatorSubsystem elevator, double power) {
     m_elevator = elevator;
+    m_power = power;
     addRequirements(m_elevator);
-    m_freaky = freaky;
-    timeToGo = Constants.NonChassis.millisToL4;
-    if(freaky == 1) {
-      timeToGo -= 1000;
-    }
-    else if(freaky == 2) {
-      timeToGo -= 1500;
-    }
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_startTime = System.currentTimeMillis();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double power = 0.3;
+    double power = SmartDashboard.getNumber("Elevator Up Power", m_power);
     if(m_elevator.checkPhotoeye()) {
       end(true);
     }
@@ -50,12 +35,12 @@ public class ElevatorToL4 extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_elevator.elevatorHold(0.025);
+    m_elevator.elevatorUp(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return System.currentTimeMillis()-m_startTime > timeToGo;
+    return false;
   }
 }

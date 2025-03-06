@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9590163934426226,
-        "y": 0.830276639344262
+        "x": 2.0276074025285533,
+        "y": 1.5534567276543911
       },
       "isLocked": false,
       "linkedName": "load"
     },
     {
       "anchor": {
-        "x": 2.8530737704918034,
-        "y": 4.030993852459016
+        "x": 4.0638319672131145,
+        "y": 2.9640881147540985
       },
       "prevControl": {
-        "x": 2.2656762295081965,
-        "y": 2.9521004098360653
+        "x": 3.3325819672131147,
+        "y": 1.8252561475409823
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "west"
+      "linkedName": "southwest"
     }
   ],
   "rotationTargets": [],
@@ -33,13 +33,24 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "all the way up",
-      "waypointRelativePos": 0,
+      "name": "intake into outtake",
+      "waypointRelativePos": 0.04036087369420893,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "upToL4"
+          "name": "spitCoral"
+        }
+      }
+    },
+    {
+      "name": "start going up",
+      "waypointRelativePos": 0.5911680911680891,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "elevatorUp"
         }
       }
     }
@@ -54,7 +65,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 59.99999999999999
   },
   "reversed": false,
   "folder": null,
@@ -62,5 +73,5 @@
     "velocity": 0,
     "rotation": 53.471000000000004
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

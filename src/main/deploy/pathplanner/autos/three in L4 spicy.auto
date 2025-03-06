@@ -1,0 +1,91 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "start-to-southeast freaky"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upToL4_freakier"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "downFromL4_freakier"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southeast-to-load freaky"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-southwest freaky"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upToL4_freakier"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "downFromL4_freakier"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southwest-to-load freaky"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-southwest2 freaky"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upToL4_freakier"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

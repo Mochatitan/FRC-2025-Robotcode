@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor1 = new SparkMax(Constants.NonChassis.elevatorMotorID1, MotorType.kBrushless);
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
+  private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
+  private int desiredPoint = 0;
 
   DigitalInput input = new DigitalInput(1);
 
@@ -72,5 +75,35 @@ public class ElevatorSubsystem extends SubsystemBase {
   {
     SmartDashboard.putBoolean("Photoeye",input.get());
     return input.get();
+  }
+
+  public void setTarget(int target) {
+    desiredPoint = target;
+  }
+
+  public int getTarget() {
+    return desiredPoint;
+  }
+
+  public int atPoint() {
+    int targetTicks = 0;
+    if(desiredPoint == 1) {
+      targetTicks = Constants.NonChassis.ticksToL2;
+    }
+    else if(desiredPoint == 2) {
+      targetTicks = Constants.NonChassis.ticksToL3;
+    }
+    else if(desiredPoint == 3) {
+      targetTicks = Constants.NonChassis.ticksToL4;
+    }
+    if(encoder1.getPosition() > targetTicks + 20) {
+      return 1;
+    }
+    else if(encoder1.getPosition() < targetTicks - 20) {
+      return -1;
+    }
+    else {
+      return 0;
+    }
   }
 }

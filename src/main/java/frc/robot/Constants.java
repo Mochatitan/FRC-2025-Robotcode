@@ -37,7 +37,11 @@ public final class Constants {
     public static final double millisToL4 = 2710;   
     public static final double millisDownL4 = 2100;
     public static final double millisToSpit = 190;
-    public static final double millisToIntake = 800;   
+    public static final double millisToIntake = 800; 
+
+    public static final int ticksToL2 = 1000;
+    public static final int ticksToL3 = 2000;
+    public static final int ticksToL4 = 3000;
   }
 
   public static class Drive {

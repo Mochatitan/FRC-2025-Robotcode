@@ -22,6 +22,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.SensorSubsystem;
+import frc.robot.commands.checkSensors;
 
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
@@ -32,13 +34,12 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import frc.robot.Constants.Operator;
 
-import com.pathplanner.lib.commands.PathPlannerAuto;
-
 public class RobotContainer {
   CommandXboxController m_driverController = new CommandXboxController(Operator.kDriverControllerPort);
   DriveSubsystem m_drive;
   ElevatorSubsystem m_elevator;
   CoralSubsystem m_coral;
+  SensorSubsystem m_sensor;
   SendableChooser<Command> autoChooser;
 
   public RobotContainer() throws IOException, ParseException{
@@ -46,6 +47,7 @@ public class RobotContainer {
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
     m_coral = new CoralSubsystem();
+    m_sensor = new SensorSubsystem();
     NamedCommands.registerCommand("upToL4", new ElevatorToL4(m_elevator,0));
     NamedCommands.registerCommand("upToL4_freaky", new ElevatorToL4(m_elevator,1));
     NamedCommands.registerCommand("upToL4_freakier", new ElevatorToL4(m_elevator,2));
@@ -64,6 +66,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
     NamedCommands.registerCommand("Check for Photoeye", new checkPhotoeye(m_elevator));
+    NamedCommands.registerCommand("Check for Sensors", new checkSensors(m_sensor));
 
     SmartDashboard.putNumber("Elevator Up Power", 0.3);
     SmartDashboard.putNumber("Elevator Down Power", -0.3);
@@ -75,7 +78,9 @@ public class RobotContainer {
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
     m_elevator.setDefaultCommand(new elevatorHold(m_elevator, 0.025));
-    //m_elevator.setDefaultCommand(new elevatorUp(m_elevator,SmartDashboard.getNumber("Elevator Up Power",0.0)));
+
+    //Constantly pulling 
+    m_sensor.setDefaultCommand(new checkSensors(m_sensor));
 
     configureBindings();
     autoChooser = AutoBuilder.buildAutoChooser("Drive Forward");

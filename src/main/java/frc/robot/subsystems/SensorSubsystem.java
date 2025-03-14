@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class SensorSubsystem extends SubsystemBase {
   Thread m_visionThread;
 
-  AnalogInput analog = new AnalogInput(0);
+  AnalogInput distenceSensor = new AnalogInput(0);
   
   public SensorSubsystem() {
       m_visionThread =
@@ -67,8 +67,8 @@ public class SensorSubsystem extends SubsystemBase {
 
     public double checkSensors()
   {
-    SmartDashboard.putNumber("Distence Sensor",(1/analog.getVoltage()-1125)/137500);
-    return analog.getVoltage();
+    SmartDashboard.putNumber("Distence Sensor",distenceSensor.getVoltage());
+    return distenceSensor.getVoltage();
   }
   }
   

@@ -11,6 +11,7 @@ public class checkSensors extends Command {
   private SensorSubsystem m_sensor;
   public checkSensors(SensorSubsystem sensor) {
     m_sensor = sensor;
+    addRequirements(m_sensor);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

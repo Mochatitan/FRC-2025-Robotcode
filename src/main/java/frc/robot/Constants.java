@@ -30,8 +30,8 @@ public final class Constants {
   public class NonChassis {
     public static final int elevatorMotorID1 = 31;
     public static final int elevatorMotorID2 = 32;
-    public static final int coralIntakeMotorID1 = 11;
-    public static final int coralIntakeMotorID2 = 12;   
+    // public static final int coralIntakeMotorID1 = 11;
+    // public static final int coralIntakeMotorID2 = 12;   
     public static final int coralPlaceMotorID3 = 13;   
     public static final int coralPlaceMotorID4 = 14;  
     public static final double millisToL4 = 2710;   

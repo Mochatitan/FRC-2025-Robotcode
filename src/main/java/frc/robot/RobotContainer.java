@@ -7,14 +7,14 @@ import frc.robot.commands.elevatorDown;
 import frc.robot.commands.elevatorHold;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.commands.checkPhotoeye;
-import frc.robot.commands.coralIntake;
-import frc.robot.commands.coralReverseIntake;
+// import frc.robot.commands.coralIntake;
+// import frc.robot.commands.coralReverseIntake;
 import frc.robot.commands.coralPlace;
 import frc.robot.commands.coralReversePlace;
 import frc.robot.commands.creepMode;
-import frc.robot.commands.autonCommands.ElevatorDownFromL4;
-import frc.robot.commands.autonCommands.ElevatorToL4;
-import frc.robot.commands.autonCommands.IntakeCoral;
+// import frc.robot.commands.autonCommands.ElevatorDownFromL4;
+// import frc.robot.commands.autonCommands.ElevatorToL4;
+//import frc.robot.commands.autonCommands.IntakeCoral;
 import frc.robot.commands.autonCommands.SpitCoral;
 import frc.robot.commands.autonCommands.elevatorUpAuton;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -30,8 +30,6 @@ import java.io.IOException;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-
 import frc.robot.Constants.Operator;
 
 public class RobotContainer {
@@ -48,20 +46,20 @@ public class RobotContainer {
     m_elevator = new ElevatorSubsystem();
     m_coral = new CoralSubsystem();
     m_sensor = new SensorSubsystem();
-    NamedCommands.registerCommand("upToL4", new ElevatorToL4(m_elevator,0));
-    NamedCommands.registerCommand("upToL4_freaky", new ElevatorToL4(m_elevator,1));
-    NamedCommands.registerCommand("upToL4_freakier", new ElevatorToL4(m_elevator,2));
-    NamedCommands.registerCommand("downFromL4_freaky", new ElevatorDownFromL4(m_elevator,1));
-    NamedCommands.registerCommand("downFromL4", new ElevatorDownFromL4(m_elevator,0));
-    NamedCommands.registerCommand("downFromL4_freakier", new ElevatorDownFromL4(m_elevator,2));
-    NamedCommands.registerCommand("intakeCoral",new IntakeCoral(m_coral));
+    // NamedCommands.registerCommand("upToL4", new ElevatorToL4(m_elevator,0));
+    // NamedCommands.registerCommand("upToL4_freaky", new ElevatorToL4(m_elevator,1));
+    // NamedCommands.registerCommand("upToL4_freakier", new ElevatorToL4(m_elevator,2));
+    // NamedCommands.registerCommand("downFromL4_freaky", new ElevatorDownFromL4(m_elevator,1));
+    // NamedCommands.registerCommand("downFromL4", new ElevatorDownFromL4(m_elevator,0));
+    // NamedCommands.registerCommand("downFromL4_freakier", new ElevatorDownFromL4(m_elevator,2));
+    //NamedCommands.registerCommand("intakeCoral",new IntakeCoral(m_coral));
     NamedCommands.registerCommand("spitCoral",new SpitCoral(m_coral));
     NamedCommands.registerCommand("elevatorUp", new elevatorUpAuton(m_elevator, 0.3));
     NamedCommands.registerCommand("elevatorUpFast", new elevatorUpFast(m_elevator, 0.3));
     NamedCommands.registerCommand("elevatorDown", new elevatorDown(m_elevator, -0.3));
     NamedCommands.registerCommand("elevatorHold", new elevatorHold(m_elevator, 0.025));
-    NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
-    NamedCommands.registerCommand("Coral Reverse Intake", new coralReverseIntake(m_coral, -0.2));
+    //NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
+    //NamedCommands.registerCommand("Coral Reverse Intake", new coralReverseIntake(m_coral, -0.2));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
@@ -95,11 +93,11 @@ public class RobotContainer {
       m_driverController.rightTrigger().whileTrue(new elevatorUpFast(m_elevator, 0.3));
       m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.3));
       
-      m_driverController.y().whileTrue(new coralIntake(m_coral, 0.2));
+      // m_driverController.y().whileTrue(new coralIntake(m_coral, 0.2));
       m_driverController.a().whileTrue(new coralPlace(m_coral, 0.3));
 
       //Reverse coral direction
-      m_driverController.x().whileTrue(new coralReverseIntake(m_coral, -0.2));
+      // m_driverController.x().whileTrue(new coralReverseIntake(m_coral, -0.2));
       m_driverController.b().whileTrue(new coralReversePlace(m_coral, -0.1));
 
       //Creep mode means it drives slower

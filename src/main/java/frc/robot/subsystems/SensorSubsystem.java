@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.core.Mat;
@@ -67,7 +66,7 @@ public class SensorSubsystem extends SubsystemBase {
 
     public double checkSensors()
   {
-    SmartDashboard.putNumber("Distence Sensor",distenceSensor.getVoltage());
+    SmartDashboard.putNumber("Distence Sensor",1/(((distenceSensor.getVoltage()*1000)-1125)/137500));
     return distenceSensor.getVoltage();
   }
   }

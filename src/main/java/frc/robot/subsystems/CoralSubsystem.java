@@ -11,8 +11,8 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class CoralSubsystem extends SubsystemBase {
-  public SparkMax intakeMotor1 = new SparkMax(Constants.NonChassis.coralIntakeMotorID1, MotorType.kBrushless);
-  public SparkMax intakeMotor2 = new SparkMax(Constants.NonChassis.coralIntakeMotorID2, MotorType.kBrushless);
+  // public SparkMax intakeMotor1 = new SparkMax(Constants.NonChassis.coralIntakeMotorID1, MotorType.kBrushless);
+  // public SparkMax intakeMotor2 = new SparkMax(Constants.NonChassis.coralIntakeMotorID2, MotorType.kBrushless);
   public SparkMax placeMotor3 = new SparkMax(Constants.NonChassis.coralPlaceMotorID3, MotorType.kBrushless);
   public SparkMax placeMotor4 = new SparkMax(Constants.NonChassis.coralPlaceMotorID4, MotorType.kBrushless);
 
@@ -24,17 +24,17 @@ public class CoralSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void coralIntake(double power) {
-    intakeMotor1.set(power);
-    intakeMotor2.set(-power);
-    System.out.println("Coral Intake Power: " + power);
-  }
+  // public void coralIntake(double power) {
+  //   intakeMotor1.set(power);
+  //   intakeMotor2.set(-power);
+  //   System.out.println("Coral Intake Power: " + power);
+  // }
 
-  public void coralReverseIntake(double power) {
-    intakeMotor1.set(power);
-    intakeMotor2.set(-power);
-    System.out.println("Coral Outtake Power: " + power);
-  }
+  // public void coralReverseIntake(double power) {
+  //   intakeMotor1.set(power);
+  //   intakeMotor2.set(-power);
+  //   System.out.println("Coral Outtake Power: " + power);
+  // }
 
   public void coralPlace(double power) {
     placeMotor3.set(power);
@@ -48,10 +48,10 @@ public class CoralSubsystem extends SubsystemBase {
     System.out.println("Coral Reverse Placing Power: " + power);
   }
 
-  public void intakeAndSpit(double pow1,double pow2) {
-    placeMotor3.set(pow1);
-    placeMotor4.set(-pow1);
-    intakeMotor1.set(pow2);
-    intakeMotor2.set(-pow2);
-  }
+  // public void intakeAndSpit(double pow1,double pow2) {
+  //   placeMotor3.set(pow1);
+  //   placeMotor4.set(-pow1);
+  //   intakeMotor1.set(pow2);
+  //   intakeMotor2.set(-pow2);
+  // }
 }

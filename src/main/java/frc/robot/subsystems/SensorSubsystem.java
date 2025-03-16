@@ -66,7 +66,7 @@ public class SensorSubsystem extends SubsystemBase {
 
     public double checkSensors()
   {
-    SmartDashboard.putNumber("Distence Sensor",1/(((distenceSensor.getVoltage()*1000)-1125)/137500));
+    SmartDashboard.putNumber("Distence Sensor",(((distenceSensor.getVoltage()*1000)-1125)/137500));
     return distenceSensor.getVoltage();
   }
   }

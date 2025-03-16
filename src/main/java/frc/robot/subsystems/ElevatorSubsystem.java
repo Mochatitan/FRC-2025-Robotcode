@@ -85,6 +85,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     return desiredPoint;
   }
 
+  public double getPosition() {
+    return encoder1.getPosition();
+  }
+
   public int atPoint() {
     int targetTicks = 0;
     if(desiredPoint == 1) {

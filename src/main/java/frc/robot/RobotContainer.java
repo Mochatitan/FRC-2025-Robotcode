@@ -3,9 +3,12 @@ package frc.robot;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.commands.elevatorUp;
 import frc.robot.commands.elevatorUpFast;
+import frc.robot.commands.resetEncoder;
+import frc.robot.commands.travelToSetpoint;
 import frc.robot.commands.elevatorDown;
 import frc.robot.commands.elevatorHold;
 import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.commands.changePoint;
 import frc.robot.commands.checkPhotoeye;
 // import frc.robot.commands.coralIntake;
 // import frc.robot.commands.coralReverseIntake;
@@ -75,7 +78,7 @@ public class RobotContainer {
    
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
-    m_elevator.setDefaultCommand(new elevatorHold(m_elevator, 0.025));
+    m_elevator.setDefaultCommand(new travelToSetpoint(m_elevator));
 
     //Constantly pulling 
     m_sensor.setDefaultCommand(new checkSensors(m_sensor));
@@ -99,6 +102,13 @@ public class RobotContainer {
       //Reverse coral direction
       // m_driverController.x().whileTrue(new coralReverseIntake(m_coral, -0.2));
       m_driverController.b().whileTrue(new coralReversePlace(m_coral, -0.1));
+
+      m_driverController.povUp().onTrue(new changePoint(m_elevator,1));
+      m_driverController.povDown().onTrue(new changePoint(m_elevator,-1));
+
+      m_driverController.povLeft().onTrue(new changePoint(m_elevator,99-m_elevator.getTarget()));
+
+      m_driverController.povRight().onTrue(new resetEncoder(m_elevator));
 
       //Creep mode means it drives slower
       //pov equals dpad

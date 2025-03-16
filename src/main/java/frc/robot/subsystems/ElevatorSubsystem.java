@@ -18,6 +18,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private int desiredPoint = 0;
+  private int cooked = 0;
 
   DigitalInput input = new DigitalInput(1);
 
@@ -41,6 +42,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
   }
 
+  public void resetEnc() {
+    encoder1.setPosition(0);
+  }
+
   public void elevatorUpFast(double power) {
     if (input.get()){
     elevatorMotor1.set(power+.5);
@@ -62,7 +67,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   {
     elevatorMotor1.set(power);
     elevatorMotor2.set(-power);
-    //System.out.println("Elevator Hold Power: " + power);
+    System.out.println("Elevator Hold Power: " + power);
   }
 
   public void elevatorStop(double power)
@@ -78,7 +83,12 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void setTarget(int target) {
+    if(target == 99) {
+        cooked = 1;
+    }
+    if(target < 4 && target > -1) {
     desiredPoint = target;
+    }
   }
 
   public int getTarget() {
@@ -90,7 +100,9 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public int atPoint() {
-    int targetTicks = 0;
+    SmartDashboard.putNumber("desired point",desiredPoint);
+    SmartDashboard.putNumber("encoder position",getPosition());
+    double targetTicks = 0.1;
     if(desiredPoint == 1) {
       targetTicks = Constants.NonChassis.ticksToL2;
     }
@@ -100,14 +112,18 @@ public class ElevatorSubsystem extends SubsystemBase {
     else if(desiredPoint == 3) {
       targetTicks = Constants.NonChassis.ticksToL4;
     }
-    if(encoder1.getPosition() > targetTicks + 20) {
-      return 1;
-    }
-    else if(encoder1.getPosition() < targetTicks - 20) {
+    if(encoder1.getPosition() > targetTicks + 0.6) {
       return -1;
+    }
+    else if(encoder1.getPosition() < targetTicks - 0.6) {
+      return 1;
     }
     else {
       return 0;
     }
+  }
+
+  public int getCooked() {
+    return cooked;
   }
 }

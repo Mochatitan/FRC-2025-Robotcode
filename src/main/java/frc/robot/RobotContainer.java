@@ -89,8 +89,8 @@ public class RobotContainer {
       //Sets Gyro to zero where it's facing
       m_driverController.start().onTrue(m_drive.zeroGyro());
 
-      m_driverController.leftTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
-      m_driverController.rightTrigger().whileTrue(new elevatorUpFast(m_elevator, 0.3));
+      m_driverController.rightTrigger().whileTrue(new elevatorUp(m_elevator, 0.3));
+      m_driverController.rightBumper().whileTrue(new elevatorUpFast(m_elevator, 0.3));
       m_driverController.leftTrigger().whileTrue(new elevatorDown(m_elevator, -0.3));
       
       // m_driverController.y().whileTrue(new coralIntake(m_coral, 0.2));

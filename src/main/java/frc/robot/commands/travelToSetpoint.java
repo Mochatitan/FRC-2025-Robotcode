@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -25,7 +26,7 @@ public class travelToSetpoint extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_elevator.getCooked() == 1) {
+    if(m_elevator.getCooked() % 2 == 1) {
         m_elevator.elevatorHold(0.025);
     }
     else {
@@ -37,8 +38,9 @@ public class travelToSetpoint extends Command {
             m_elevator.elevatorDown(-0.3);
         }
         else {
-            m_elevator.elevatorHold(0.025);
+            m_elevator.elevatorHold(0.02);
         }
+        // m_elevator.elevatorUp(MathUtil.clamp(m_elevator.calculatePID(),-1,1) + 0.02);
     }
   }
 

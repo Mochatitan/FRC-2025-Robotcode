@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -20,10 +21,12 @@ public class ElevatorSubsystem extends SubsystemBase {
   private int desiredPoint = 0;
   private int cooked = 0;
 
+  private PIDController m_pid = new PIDController(0.04, 0,0.01);
+
   DigitalInput input = new DigitalInput(1);
 
   public ElevatorSubsystem() {
-  
+    m_pid.setTolerance(0.3);
   }
 
   @Override
@@ -43,7 +46,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void resetEnc() {
-    encoder1.setPosition(0);
+    encoder1.setPosition(0.2);
   }
 
   public void elevatorUpFast(double power) {
@@ -84,10 +87,20 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public void setTarget(int target) {
     if(target == 99) {
-        cooked = 1;
+        cooked += 1;
     }
     if(target < 4 && target > -1) {
-    desiredPoint = target;
+      desiredPoint = target;
+    }
+    m_pid.setSetpoint(0.2);
+    if(desiredPoint == 1) {
+      m_pid.setSetpoint(Constants.NonChassis.ticksToL2);
+    }
+    else if(desiredPoint == 2) {
+      m_pid.setSetpoint(Constants.NonChassis.ticksToL3);
+    }
+    else if(desiredPoint == 3) {
+      m_pid.setSetpoint(Constants.NonChassis.ticksToL4);
     }
   }
 
@@ -112,10 +125,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     else if(desiredPoint == 3) {
       targetTicks = Constants.NonChassis.ticksToL4;
     }
-    if(encoder1.getPosition() > targetTicks + 0.6) {
+    if(encoder1.getPosition() > targetTicks + 1.5) {
       return -1;
     }
-    else if(encoder1.getPosition() < targetTicks - 0.6) {
+    else if(encoder1.getPosition() < targetTicks - 1.5) {
       return 1;
     }
     else {
@@ -125,5 +138,9 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public int getCooked() {
     return cooked;
+  }
+
+  public double calculatePID() {
+    return m_pid.calculate(getPosition());
   }
 }

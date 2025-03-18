@@ -20,7 +20,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private int desiredPoint = 0;
   private int cooked = 0;
-  private double speed = 0.7;
+  private double speed = 0.5;
 
   private PIDController m_pid = new PIDController(0.04, 0,0.01);
 

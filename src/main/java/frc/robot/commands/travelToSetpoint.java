@@ -31,7 +31,7 @@ public class travelToSetpoint extends Command {
     //}
     //else {
         int direction = m_elevator.atPoint();
-        if(m_elevator.getSpeed() < 0.7) {
+        if(m_elevator.getSpeed() < 0.6) {
           m_elevator.setSpeed(m_elevator.getSpeed() + 0.07);
         }
         if(direction == 1) {

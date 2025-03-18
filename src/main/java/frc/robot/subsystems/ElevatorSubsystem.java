@@ -20,6 +20,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private int desiredPoint = 0;
   private int cooked = 0;
+  private double speed = 0.7;
 
   private PIDController m_pid = new PIDController(0.04, 0,0.01);
 
@@ -102,6 +103,9 @@ public class ElevatorSubsystem extends SubsystemBase {
     else if(desiredPoint == 3) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL4);
     }
+    if(atPoint() == 0) {
+      speed = 0.1;
+    }
   }
 
   public int getTarget() {
@@ -142,5 +146,17 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public double calculatePID() {
     return m_pid.calculate(getPosition());
+  }
+
+  public void cook() {
+    cooked += 1;
+  }
+
+  public double getSpeed() {
+    return speed;
+  }
+
+  public void setSpeed(double newSpeed) {
+    speed = newSpeed;
   }
 }

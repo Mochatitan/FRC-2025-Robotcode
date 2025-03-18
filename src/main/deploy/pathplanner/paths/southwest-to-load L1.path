@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.015881147540983,
-        "y": 2.8921618852459017
+        "x": 3.884016393442623,
+        "y": 2.9640881147540985
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.316207812521423,
-        "y": 1.8560286880046526
+        "x": 2.1843430584230625,
+        "y": 1.9279549175128494
       },
       "isLocked": false,
-      "linkedName": "southwest"
+      "linkedName": "southwest L1"
     },
     {
       "anchor": {

@@ -8,6 +8,7 @@ import frc.robot.commands.travelToSetpoint;
 import frc.robot.commands.elevatorDown;
 import frc.robot.commands.elevatorHold;
 import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.commands.Cooked;
 import frc.robot.commands.changePoint;
 import frc.robot.commands.checkPhotoeye;
 // import frc.robot.commands.coralIntake;
@@ -63,6 +64,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("elevatorHold", new elevatorHold(m_elevator, 0.025));
     //NamedCommands.registerCommand("Coral Intake", new coralIntake(m_coral, 0.2));
     //NamedCommands.registerCommand("Coral Reverse Intake", new coralReverseIntake(m_coral, -0.2));
+    NamedCommands.registerCommand("upOne", new changePoint(m_elevator, 1));
+    NamedCommands.registerCommand("downOne", new changePoint(m_elevator, -1));
     NamedCommands.registerCommand("Coral Place", new coralPlace(m_coral, 0.2));
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
@@ -79,6 +82,7 @@ public class RobotContainer {
     // 0.025 power up will hold both stages or just 2nd stage in place
     // 0.2 power draws <20 amps at stall
     m_elevator.setDefaultCommand(new travelToSetpoint(m_elevator));
+    //m_elevator.setDefaultCommand(new checkPhotoeye(m_elevator));
 
     //Constantly pulling 
     m_sensor.setDefaultCommand(new checkSensors(m_sensor));
@@ -106,7 +110,7 @@ public class RobotContainer {
       m_driverController.povUp().onTrue(new changePoint(m_elevator,1));
       m_driverController.povDown().onTrue(new changePoint(m_elevator,-1));
 
-      m_driverController.povLeft().onTrue(new changePoint(m_elevator,99-m_elevator.getTarget()));
+      m_driverController.povLeft().onTrue(new Cooked(m_elevator));
 
       m_driverController.povRight().onTrue(new resetEncoder(m_elevator));
 

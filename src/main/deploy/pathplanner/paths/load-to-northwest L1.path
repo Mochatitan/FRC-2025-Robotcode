@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 3.7641393442622952,
-        "y": 5.025973360655737
+        "x": 3.9199795081967217,
+        "y": 5.085911885245901
       },
       "prevControl": {
-        "x": 3.392520491803279,
-        "y": 6.032940573770491
+        "x": 3.5344909256887895,
+        "y": 5.410889482688631
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "northwest"
+      "linkedName": "northwest L1"
     }
   ],
   "rotationTargets": [],
@@ -34,30 +34,26 @@
   "eventMarkers": [
     {
       "name": "intake into outtake",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "spitCoral"
-        }
-      }
+      "command": null
     },
     {
-      "name": "start going up",
-      "waypointRelativePos": 0.17901234567901228,
+      "name": "upOne",
+      "waypointRelativePos": 0.31576448243114646,
       "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "elevatorUp"
-        }
-      }
+      "command": null
+    },
+    {
+      "name": "downOne",
+      "waypointRelativePos": 0.9045584045584044,
+      "endWaypointRelativePos": null,
+      "command": null
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -65,7 +61,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -63.06047193619921
+    "rotation": -60.802513953935566
   },
   "reversed": false,
   "folder": null,
@@ -73,5 +69,5 @@
     "velocity": 0,
     "rotation": -53.285797023953755
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -31,16 +31,16 @@ public class travelToSetpoint extends Command {
     //}
     //else {
         int direction = m_elevator.atPoint();
-        if(m_elevator.getSpeed() < 0.6) {
-          m_elevator.setSpeed(m_elevator.getSpeed() + 0.07);
+        if(m_elevator.getSpeed() < 0.4) {
+          m_elevator.setSpeed(m_elevator.getSpeed() + 0.1);
         }
         if(direction == 1) {
-            m_elevator.elevatorUp(m_elevator.getSpeed());
-            //m_elevator.elevatorUp(0.5);
+            //m_elevator.elevatorUp(m_elevator.getSpeed());
+            m_elevator.elevatorUp(0.3);
         }
         else if(direction == -1) {
-            m_elevator.elevatorDown(-m_elevator.getSpeed());
-            //m_elevator.elevatorDown(-0.5);
+            //m_elevator.elevatorDown(-m_elevator.getSpeed());
+            m_elevator.elevatorDown(-0.3);
         }
         else {
             m_elevator.elevatorHold(0.02);

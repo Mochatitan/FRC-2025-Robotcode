@@ -1,0 +1,97 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "start-to-southeast L1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intake into outtake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southeast-to-load L1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-southwest L1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intake into outtake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southwest-to-load L1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-southwest L1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intake into outtake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

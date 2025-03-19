@@ -31,7 +31,26 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "upOne",
+      "waypointRelativePos": 0.22459639126305908,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "upOne",
+      "waypointRelativePos": 0.5417853751187087,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "upOne",
+      "waypointRelativePos": 0.8855650522317174,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 4.0,

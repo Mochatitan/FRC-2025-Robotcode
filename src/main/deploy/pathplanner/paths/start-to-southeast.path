@@ -33,8 +33,20 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "all the way up",
-      "waypointRelativePos": 0,
+      "name": "upOne",
+      "waypointRelativePos": 0.19420702754036095,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "upOne",
+      "waypointRelativePos": 0.6101614434947807,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "upOne",
+      "waypointRelativePos": 0.8646723646723673,
       "endWaypointRelativePos": null,
       "command": null
     }

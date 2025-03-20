@@ -19,7 +19,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private int desiredPoint = 0;
-  private int cooked = 0;
+  private boolean cooked;
   private double speed = 0.5;
 
   private PIDController m_pid = new PIDController(0.04, 0,0.01);
@@ -28,6 +28,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public ElevatorSubsystem() {
     m_pid.setTolerance(0.3);
+    cooked = false;
   }
 
   @Override
@@ -87,9 +88,6 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void setTarget(int target) {
-    if(target == 99) {
-        cooked += 1;
-    }
     if(target < 4 && target > -1) {
       desiredPoint = target;
     }
@@ -140,7 +138,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
   }
 
-  public int getCooked() {
+  public boolean getCooked() {
     return cooked;
   }
 
@@ -149,7 +147,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void cook() {
-    cooked += 1;
+    cooked = !cooked;
   }
 
   public double getSpeed() {

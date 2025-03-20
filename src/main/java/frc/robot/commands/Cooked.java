@@ -14,13 +14,12 @@ public class Cooked extends InstantCommand {
   private ElevatorSubsystem m_elevator;
   public Cooked(ElevatorSubsystem elevator) {
     m_elevator = elevator;
-    m_elevator.cook();
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    m_elevator.cook();
   }
 }

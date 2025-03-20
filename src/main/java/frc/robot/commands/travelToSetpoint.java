@@ -26,27 +26,27 @@ public class travelToSetpoint extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //if(m_elevator.getCooked() % 2 == 1) {
-    //    m_elevator.elevatorHold(0.025);
-    //}
-    //else {
+    if(m_elevator.getCooked()) {
+       m_elevator.elevatorHold(0.025);
+    }
+    else {
         int direction = m_elevator.atPoint();
-        if(m_elevator.getSpeed() < 0.4) {
-          m_elevator.setSpeed(m_elevator.getSpeed() + 0.1);
+        if(m_elevator.getSpeed() < 0.6) {
+          m_elevator.setSpeed(m_elevator.getSpeed() + 0.07);
         }
         if(direction == 1) {
             //m_elevator.elevatorUp(m_elevator.getSpeed());
-            m_elevator.elevatorUp(0.3);
+            m_elevator.elevatorUp(0.5);
         }
         else if(direction == -1) {
             //m_elevator.elevatorDown(-m_elevator.getSpeed());
-            m_elevator.elevatorDown(-0.3);
+            m_elevator.elevatorDown(-0.5);
         }
         else {
             m_elevator.elevatorHold(0.02);
         }
         // m_elevator.elevatorUp(MathUtil.clamp(m_elevator.calculatePID(),-1,1) + 0.02);
-    //}
+    }
   }
 
 

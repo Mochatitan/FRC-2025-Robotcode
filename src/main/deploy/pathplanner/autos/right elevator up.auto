@@ -1,0 +1,37 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "start2-to-northeast L1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "upOne"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

@@ -26,9 +26,6 @@ public class elevatorUpAuton extends Command {
   @Override
   public void execute() {
     double power = SmartDashboard.getNumber("Elevator Up Power", m_power);
-    if(m_elevator.checkPhotoeye()) {
-      end(true);
-    }
     m_elevator.elevatorUp(power);
   }
 
@@ -41,6 +38,6 @@ public class elevatorUpAuton extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_elevator.checkPhotoeye();
   }
 }

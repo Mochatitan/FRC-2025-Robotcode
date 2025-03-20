@@ -26,8 +26,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.SensorSubsystem;
-import frc.robot.commands.checkSensors;
+// import frc.robot.subsystems.SensorSubsystem;
+// import frc.robot.commands.checkSensors;
 
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class RobotContainer {
   DriveSubsystem m_drive;
   ElevatorSubsystem m_elevator;
   CoralSubsystem m_coral;
-  SensorSubsystem m_sensor;
+  //SensorSubsystem m_sensor;
   SendableChooser<Command> autoChooser;
 
   public RobotContainer() throws IOException, ParseException{
@@ -49,7 +49,7 @@ public class RobotContainer {
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
     m_coral = new CoralSubsystem();
-    m_sensor = new SensorSubsystem();
+    //m_sensor = new SensorSubsystem();
     // NamedCommands.registerCommand("upToL4", new ElevatorToL4(m_elevator,0));
     // NamedCommands.registerCommand("upToL4_freaky", new ElevatorToL4(m_elevator,1));
     // NamedCommands.registerCommand("upToL4_freakier", new ElevatorToL4(m_elevator,2));
@@ -70,7 +70,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Coral Reverse Place", new coralReversePlace(m_coral, -0.2));
     NamedCommands.registerCommand("Creep Mode", new creepMode(m_drive));
     NamedCommands.registerCommand("Check for Photoeye", new checkPhotoeye(m_elevator));
-    NamedCommands.registerCommand("Check for Sensors", new checkSensors(m_sensor));
+    //NamedCommands.registerCommand("Check for Sensors", new checkSensors(m_sensor));
 
     SmartDashboard.putNumber("Elevator Up Power", 0.3);
     SmartDashboard.putNumber("Elevator Down Power", -0.3);
@@ -85,7 +85,7 @@ public class RobotContainer {
     //m_elevator.setDefaultCommand(new checkPhotoeye(m_elevator));
 
     //Constantly pulling 
-    m_sensor.setDefaultCommand(new checkSensors(m_sensor));
+    //m_sensor.setDefaultCommand(new checkSensors(m_sensor));
 
     configureBindings();
     autoChooser = AutoBuilder.buildAutoChooser("Drive Forward");

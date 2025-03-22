@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "startmid-east"
+            "pathName": "start2-to-northeast L1"
           }
         },
         {
@@ -23,21 +23,45 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "northeast-to-load L1"
+          }
+        },
+        {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 3.0
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "toL2"
+            "name": "spitCoral"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "back from center"
+            "pathName": "load-to-northwest L1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "northwest-to-load L1"
           }
         }
       ]

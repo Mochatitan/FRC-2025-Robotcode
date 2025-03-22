@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "load-to-northwest L1"
+            "pathName": "load-to-northeast L1"
           }
         },
         {
@@ -61,7 +61,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "northwest-to-load L1"
+            "pathName": "northeast-to-load L1"
           }
         },
         {
@@ -104,6 +104,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "L1s",
   "choreoAuto": false
 }

@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.608299180327869,
-        "y": 1.9091700819672137
+        "x": 4.056,
+        "y": 1.6947499999999989
       },
       "isLocked": false,
       "linkedName": "southeast L1"
@@ -20,8 +20,8 @@
         "y": 0.905
       },
       "prevControl": {
-        "x": 2.5896639344256487,
-        "y": 1.0848155737717677
+        "x": 2.379,
+        "y": 1.6654999999999993
       },
       "nextControl": null,
       "isLocked": false,
@@ -68,7 +68,7 @@
     "rotation": 53.471000000000004
   },
   "reversed": false,
-  "folder": null,
+  "folder": "South",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 120.37912601136829

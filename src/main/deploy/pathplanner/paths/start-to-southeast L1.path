@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.502635403352354,
-        "y": 1.2228618417817168
+        "x": 7.098,
+        "y": 1.6557499999999996
       },
       "isLocked": false,
       "linkedName": "start"
@@ -57,7 +57,7 @@
     "rotation": 120.37912601136829
   },
   "reversed": false,
-  "folder": null,
+  "folder": "South",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

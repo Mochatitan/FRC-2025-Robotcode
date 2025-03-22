@@ -68,7 +68,7 @@
     "rotation": 59.99999999999999
   },
   "reversed": false,
-  "folder": null,
+  "folder": "South",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 53.471000000000004

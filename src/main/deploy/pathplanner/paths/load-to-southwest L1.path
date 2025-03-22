@@ -17,15 +17,15 @@
     {
       "anchor": {
         "x": 3.884016393442623,
-        "y": 2.9880635245901637
+        "y": 2.9640881147540985
       },
       "prevControl": {
         "x": 3.152766393442623,
-        "y": 1.8492315573770477
+        "y": 1.8252561475409825
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "southwest L1"
     }
   ],
   "rotationTargets": [],
@@ -54,10 +54,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 53.471000000000004
+    "rotation": 59.99999999999999
   },
   "reversed": false,
-  "folder": null,
+  "folder": "South",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 53.471000000000004

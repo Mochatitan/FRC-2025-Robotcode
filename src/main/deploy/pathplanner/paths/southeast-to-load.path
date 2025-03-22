@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.975,
-        "y": 2.7962602459016397
+        "x": 5.094774590163934,
+        "y": 2.9640881147540985
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.4885245901639346,
-        "y": 1.741342213114755
+        "x": 3.608299180327869,
+        "y": 1.9091700819672137
       },
       "isLocked": false,
-      "linkedName": "southeast"
+      "linkedName": "southeast L1"
     },
     {
       "anchor": {
@@ -68,7 +68,7 @@
     "rotation": 53.471000000000004
   },
   "reversed": false,
-  "folder": null,
+  "folder": "South",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 120.37912601136829

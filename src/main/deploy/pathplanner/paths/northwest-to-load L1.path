@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.307856927668119,
-        "y": 4.770147556002709
+        "x": 4.192500000004904,
+        "y": 5.721499999995655
       },
       "isLocked": false,
       "linkedName": "northwest L1"
@@ -20,8 +20,8 @@
         "y": 7.13525
       },
       "prevControl": {
-        "x": 0.8040114174920682,
-        "y": 7.460227597442731
+        "x": 1.5210000000049044,
+        "y": 6.998749999995655
       },
       "nextControl": null,
       "isLocked": false,
@@ -68,7 +68,7 @@
     "rotation": -53.285797023953755
   },
   "reversed": false,
-  "folder": null,
+  "folder": "North",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -60.802513953935566

@@ -1,36 +1,38 @@
-// // Copyright (c) FIRST and other WPILib contributors.
-// // Open Source Software; you can modify and/or share it under the terms of
-// // the WPILib BSD license file in the root directory of this project.
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.autonCommands;
 
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.subsystems.ElevatorSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class travelToSetpoint extends Command {
-  /** Creates a new travelToSetpoint. */
-  private ElevatorSubsystem m_elevator;
-  public travelToSetpoint(ElevatorSubsystem elevator) {
+public class goToL1_from_L4 extends Command {
+  /** Creates a new goToPoint. */
+private int m_point;
+private ElevatorSubsystem m_elevator;
+private double startTime;
+
+  public goToL1_from_L4(ElevatorSubsystem elevator, int point) {
     m_elevator = elevator;
+    m_point = point;
     addRequirements(m_elevator);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_elevator.setTarget(m_point);
+    startTime = System.currentTimeMillis();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_elevator.getCooked()) {
-       m_elevator.elevatorHold(0.025);
-    }
-    else {
-        int direction = m_elevator.atPoint();
+    int direction = m_elevator.atPoint();
         if(direction == 1) {
             //m_elevator.elevatorUp(m_elevator.getSpeed());
             m_elevator.elevatorUp(0.5);
@@ -43,19 +45,19 @@ public class travelToSetpoint extends Command {
             m_elevator.elevatorHold(m_elevator.getSpeed());
         }
         // m_elevator.elevatorUp(MathUtil.clamp(m_elevator.calculatePID(),-1,1) + 0.02);
-    }
   }
-
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_elevator.elevatorHold(0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_elevator.atPoint() == 0 | System.currentTimeMillis() - startTime > Constants.NonChassis.millisDownL4) {
+      m_elevator.resetEnc();
+      return true;
+    }
+    return false; 
   }
 }

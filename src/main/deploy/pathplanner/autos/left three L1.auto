@@ -7,43 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "start-to-southeast freaky"
+            "pathName": "start2-to-northeast L1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "upToL4_freakier"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "spitCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "downFromL4_freakier"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "southeast-to-load freaky"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "load-to-southwest freaky"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upToL4_freakier"
+            "name": "shootL1"
           }
         },
         {
@@ -53,33 +23,81 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "downFromL4_freakier"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "southwest-to-load freaky"
+            "pathName": "northeast-to-load L1"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "load-to-southwest2 freaky"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upToL4_freakier"
+            "waitTime": 1.0
           }
         },
         {
           "type": "named",
           "data": {
             "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-northwest L1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "northwest-to-load L1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-northwest L1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "northwest-to-load L1"
           }
         }
       ]

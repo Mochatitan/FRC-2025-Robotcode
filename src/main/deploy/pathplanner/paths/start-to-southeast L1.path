@@ -20,8 +20,8 @@
         "y": 2.9640881147540985
       },
       "prevControl": {
-        "x": 6.610821884429937,
-        "y": 1.8327337782748296
+        "x": 5.6160000000000005,
+        "y": 1.8214999999999997
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,16 +33,15 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "upOne",
-      "waypointRelativePos": 0.20560303893637621,
+      "name": "toL2",
+      "waypointRelativePos": 0.6183453237410053,
       "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "downOne",
-      "waypointRelativePos": 0.9615384615384618,
-      "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "toL2"
+        }
+      }
     }
   ],
   "globalConstraints": {

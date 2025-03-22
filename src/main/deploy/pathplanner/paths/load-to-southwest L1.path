@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.9590163934426229,
-        "y": 0.8302766393442619
+        "x": 1.04325,
+        "y": 0.905
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0276074025285533,
-        "y": 1.5534567276543911
+        "x": 2.1118410090859303,
+        "y": 1.6281800883101294
       },
       "isLocked": false,
       "linkedName": "load"
@@ -33,27 +33,15 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "intake into outtake",
-      "waypointRelativePos": 0.04036087369420893,
+      "name": "toL2",
+      "waypointRelativePos": 0.5420863309352556,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "spitCoral"
+          "name": "toL2"
         }
       }
-    },
-    {
-      "name": "upOne",
-      "waypointRelativePos": 0.38224121557454827,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "downOne",
-      "waypointRelativePos": 0.9501424501424454,
-      "endWaypointRelativePos": null,
-      "command": null
     }
   ],
   "globalConstraints": {

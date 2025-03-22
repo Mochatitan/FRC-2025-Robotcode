@@ -7,43 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "start2-to-northeast freaky"
+            "pathName": "start2-to-northeast"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "upToL4_freakier"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "spitCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "downFromL4_freakier"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "northeast-to-load freaky"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "load-to-northwest freaky"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upToL4_freakier"
+            "name": "toL4"
           }
         },
         {
@@ -55,31 +25,97 @@
         {
           "type": "named",
           "data": {
-            "name": "downFromL4_freakier"
+            "name": "toL3"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "northwest-to-load freaky"
+            "pathName": "northeast-to-load"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "load-to-northwest2 freaky"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upToL4_freakier"
+            "waitTime": 1.0
           }
         },
         {
           "type": "named",
           "data": {
             "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-northeast"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intake into outtake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "toL2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "northeast-to-load"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-northwest L1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "toL2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "northwest-to-load L1"
           }
         }
       ]

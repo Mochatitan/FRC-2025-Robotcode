@@ -33,22 +33,15 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "upOne",
-      "waypointRelativePos": 0.19420702754036095,
+      "name": "toL4",
+      "waypointRelativePos": 0.6600719424460413,
       "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "upOne",
-      "waypointRelativePos": 0.6101614434947807,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "upOne",
-      "waypointRelativePos": 0.8646723646723673,
-      "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "toL4"
+        }
+      }
     }
   ],
   "globalConstraints": {

@@ -11,33 +11,21 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.2
+            "name": "toL4"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "intake into outtake"
+            "name": "spitCoral"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "downOne"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "downOne"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "downOne"
+            "name": "toL3"
           }
         },
         {
@@ -61,31 +49,31 @@
         {
           "type": "path",
           "data": {
-            "pathName": "load-to-southwest L1"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.2
+            "pathName": "load-to-southeast"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "intake into outtake"
+            "name": "shootL1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "upOne"
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "toL2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "southwest-to-load L1"
+            "pathName": "southeast-to-load L1"
           }
         },
         {
@@ -107,9 +95,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.2
+            "name": "shootL1"
           }
         },
         {
@@ -121,7 +109,13 @@
         {
           "type": "named",
           "data": {
-            "name": "upOne"
+            "name": "toL2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southwest-to-load L1"
           }
         }
       ]

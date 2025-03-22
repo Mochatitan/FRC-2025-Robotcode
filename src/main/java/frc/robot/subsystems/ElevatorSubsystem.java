@@ -20,7 +20,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private int desiredPoint = 0;
   private boolean cooked;
-  private double speed = 0.5;
+  private double speed = 0.02;
 
   private PIDController m_pid = new PIDController(0.04, 0,0.01);
 
@@ -88,21 +88,22 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public void setTarget(int target) {
-    if(target < 4 && target > -1) {
+    if((target < 4 && target > -1) | target == 10) {
       desiredPoint = target;
     }
     m_pid.setSetpoint(0.2);
+    speed = 0.02;
     if(desiredPoint == 1) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL2);
+      speed = 0.05;
     }
     else if(desiredPoint == 2) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL3);
+      speed = 0.07;
     }
     else if(desiredPoint == 3) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL4);
-    }
-    if(atPoint() == 0) {
-      speed = 0.1;
+      speed = 0.09;
     }
   }
 
@@ -126,6 +127,9 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
     else if(desiredPoint == 3) {
       targetTicks = Constants.NonChassis.ticksToL4;
+    }
+    else if(desiredPoint == 10) {
+      targetTicks = Constants.NonChassis.ticksShootL1;
     }
     if(encoder1.getPosition() > targetTicks + 1.5) {
       return -1;

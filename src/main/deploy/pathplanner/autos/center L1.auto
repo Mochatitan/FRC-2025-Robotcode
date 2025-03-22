@@ -13,13 +13,31 @@
         {
           "type": "named",
           "data": {
-            "name": "upOne"
+            "name": "shootL1"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "spitCoral"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "toL2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "back from center"
           }
         }
       ]

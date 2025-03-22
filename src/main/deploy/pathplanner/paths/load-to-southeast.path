@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.9590163934426229,
-        "y": 0.8302766393442619
+        "x": 1.04325,
+        "y": 0.905
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5479220064885468,
-        "y": 1.2574109533918723
+        "x": 2.0432500000000005,
+        "y": 0.9049999999999997
       },
       "isLocked": false,
       "linkedName": "load"
     },
     {
       "anchor": {
-        "x": 3.7401639344262296,
-        "y": 3.0719774590163933
+        "x": 5.094774590163934,
+        "y": 2.9640881147540985
       },
       "prevControl": {
-        "x": 3.116803278688524,
-        "y": 1.9571209016393447
+        "x": 4.9822500000000005,
+        "y": 1.9482499999999994
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "southwest2"
+      "linkedName": "southeast L1"
     }
   ],
   "rotationTargets": [],
@@ -33,31 +33,20 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "intake into outtake",
-      "waypointRelativePos": 0,
+      "name": "toL2",
+      "waypointRelativePos": 0.5507194244604313,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "spitCoral"
-        }
-      }
-    },
-    {
-      "name": "start going up",
-      "waypointRelativePos": 0.2226970560303902,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "elevatorUp"
+          "name": "toL2"
         }
       }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -65,7 +54,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.80251395393552
+    "rotation": 120.37912601136829
   },
   "reversed": false,
   "folder": null,
@@ -73,5 +62,5 @@
     "velocity": 0,
     "rotation": 53.471000000000004
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

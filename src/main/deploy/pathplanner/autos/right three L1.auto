@@ -11,21 +11,15 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.2
+            "name": "shootL1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "intake into outtake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upOne"
+            "name": "spitCoral"
           }
         },
         {
@@ -35,57 +29,75 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "load-to-southeast"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "southeast-to-load"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "spitCoral"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "load-to-southwest L1"
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.2
+            "name": "shootL1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "intake into outtake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upOne"
+            "name": "spitCoral"
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "southwest-to-load L1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "load-to-southwest L1"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.2
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intake into outtake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "upOne"
           }
         }
       ]

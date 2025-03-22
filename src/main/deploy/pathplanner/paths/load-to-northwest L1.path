@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.1268442622950818,
-        "y": 7.159784836065573
+        "x": 1.1895,
+        "y": 7.13525
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.514721681766479,
-        "y": 6.844020506822382
+        "x": 1.5773774194713972,
+        "y": 6.819485670756809
       },
       "isLocked": false,
       "linkedName": "top load"
@@ -33,22 +33,15 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "intake into outtake",
-      "waypointRelativePos": 0,
+      "name": "toL2",
+      "waypointRelativePos": 0.5320143884892062,
       "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "upOne",
-      "waypointRelativePos": 0.3556505223171887,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "downOne",
-      "waypointRelativePos": 0.9045584045584044,
-      "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "toL2"
+        }
+      }
     }
   ],
   "globalConstraints": {

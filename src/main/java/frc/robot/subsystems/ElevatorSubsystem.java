@@ -121,11 +121,11 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
     else if(desiredPoint == 2) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL3);
-      speed = 0.07;
+      speed = 0.06;
     }
     else if(desiredPoint == 3) {
       m_pid.setSetpoint(Constants.NonChassis.ticksToL4);
-      speed = 0.09;
+      speed = 0.07;
     }
   }
 

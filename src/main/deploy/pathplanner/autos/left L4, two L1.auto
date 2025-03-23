@@ -35,15 +35,9 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "spitCoral"
+            "name": "intakeCoral"
           }
         },
         {
@@ -61,7 +55,7 @@
         {
           "type": "named",
           "data": {
-            "name": "intake into outtake"
+            "name": "spitCoral"
           }
         },
         {
@@ -77,15 +71,9 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "spitCoral"
+            "name": "intakeCoral"
           }
         },
         {

@@ -5,10 +5,13 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
+import frc.robot.commands.coralPlace;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.commands.coralPlace;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -18,9 +21,11 @@ public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor1 = new SparkMax(Constants.NonChassis.elevatorMotorID1, MotorType.kBrushless);
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
+  private RelativeEncoder encoder2 = elevatorMotor2.getEncoder();
   private int desiredPoint = 0;
   private boolean cooked;
   private double speed = 0.02;
+  private double driveSpeed = 0.5;
 
   private PIDController m_pid = new PIDController(0.04, 0,0.01);
 
@@ -46,6 +51,18 @@ public class ElevatorSubsystem extends SubsystemBase {
     System.out.println("Elevator Blocked By Coral");
     }
   }
+  public void elevatorTwoMotorUp(double power1, double power2) {
+    if (input.get()){
+    elevatorMotor1.set(power1);
+    elevatorMotor2.set(-power2);
+    System.out.println("Elevator Up Power Motor 1: " + power1);
+    System.out.println("Elevator Up Power Motor 2: " + power2);
+    }
+    else {
+    System.out.println("Elevator Blocked By Coral");
+
+    }
+  }
 
   public void resetEnc() {
     encoder1.setPosition(0.2);
@@ -53,12 +70,12 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public void elevatorUpFast(double power) {
     if (input.get()){
-    elevatorMotor1.set(power+.5);
-    elevatorMotor2.set(-power-.5);
-    System.out.println("Elevator Up Power: " + power);
+    elevatorMotor1.set(power);
+    System.out.println("Elevator Up Power Motor; " + power);
     }
     else {
     System.out.println("Elevator Blocked By Coral");
+
     }
   }
 
@@ -83,11 +100,16 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public boolean checkPhotoeye()
   {
+    SmartDashboard.putNumber("encoder position Motor 1",getPosition());
+    SmartDashboard.putNumber("encoder position Motor 2",getPositionEncoder2());
     SmartDashboard.putBoolean("Photoeye",input.get());
     return input.get();
   }
 
   public void setTarget(int target) {
+    if(atPoint()==0) {
+      driveSpeed = 0.01;
+    }
     if((target < 4 && target > -1) | target == 10) {
       desiredPoint = target;
     }
@@ -113,6 +135,10 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public double getPosition() {
     return encoder1.getPosition();
+  }
+
+  public double getPositionEncoder2() {
+    return encoder2.getPosition();
   }
 
   public int atPoint() {
@@ -160,5 +186,13 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public void setSpeed(double newSpeed) {
     speed = newSpeed;
+  }
+
+  public double getDriveSpeed() {
+    return driveSpeed;
+  }
+
+  public void setDriveSpeed(double newSpeed) {
+    driveSpeed = newSpeed;
   }
 }

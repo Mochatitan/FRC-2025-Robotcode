@@ -6,15 +6,20 @@ package frc.robot.commands.autonCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
+import frc.robot.commands.checkPhotoeye;
 import frc.robot.subsystems.CoralSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class SpitCoral extends Command {
   /** Creates a new spitCoral. */
   private CoralSubsystem m_coral;
-  private double m_startTime;
-  public SpitCoral(CoralSubsystem coral) {
+  private ElevatorSubsystem m_elevator;
+  //private double m_startTime;
+  private int coralThrough;
+  public SpitCoral(CoralSubsystem coral,ElevatorSubsystem elevator) {
     m_coral = coral;
+    m_elevator = elevator;
     addRequirements(m_coral);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -22,13 +27,20 @@ public class SpitCoral extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_startTime = System.currentTimeMillis();
+    coralThrough = 0;
+    //m_startTime = System.currentTimeMillis();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_coral.coralPlace(0.4);
+    if(m_elevator.checkPhotoeye()) {
+      coralThrough = 1;
+    }
+    if(coralThrough == 1 && !m_elevator.checkPhotoeye()) {
+      coralThrough = 2;
+    }
+    m_coral.coralPlace(0.2);
   }
 
   // Called once the command ends or is interrupted.
@@ -40,6 +52,7 @@ public class SpitCoral extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return System.currentTimeMillis()-m_startTime > Constants.NonChassis.millisToSpit;
+    return coralThrough == 2;
+    //return System.currentTimeMillis()-m_startTime > Constants.NonChassis.millisToSpit;
   }
 }

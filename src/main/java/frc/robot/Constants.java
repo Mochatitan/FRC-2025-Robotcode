@@ -36,12 +36,12 @@ public final class Constants {
     public static final int coralPlaceMotorID4 = 14;  
     public static final double millisToL4 = 2710;   
     public static final double millisDownL4 = 2100;
-    public static final double millisToSpit = 230;
+    public static final double millisToSpit = 300;
     public static final double millisToIntake = 800; 
     public static final double ticksShootL1 = 5;
     public static final double ticksToL2 = 17.119016647338867;
     public static final double ticksToL3 = 35.99966049194336;
-    public static final double ticksToL4 = 64.810821533203125; // added 1
+    public static final double ticksToL4 = 66.810821533203125; // added 3
   }
 
   public static class Drive {

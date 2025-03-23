@@ -17,6 +17,7 @@ import frc.robot.commands.checkPhotoeye;
 import frc.robot.commands.coralPlace;
 import frc.robot.commands.coralReversePlace;
 import frc.robot.commands.creepMode;
+import frc.robot.commands.autonCommands.IntakeCoral;
 // import frc.robot.commands.autonCommands.ElevatorDownFromL4;
 // import frc.robot.commands.autonCommands.ElevatorToL4;
 //import frc.robot.commands.autonCommands.IntakeCoral;
@@ -65,7 +66,7 @@ public class RobotContainer {
     // NamedCommands.registerCommand("downFromL4_freaky", new ElevatorDownFromL4(m_elevator,1));
     // NamedCommands.registerCommand("downFromL4", new ElevatorDownFromL4(m_elevator,0));
     // NamedCommands.registerCommand("downFromL4_freakier", new ElevatorDownFromL4(m_elevator,2));
-    //NamedCommands.registerCommand("intakeCoral",new IntakeCoral(m_coral));
+    NamedCommands.registerCommand("intakeCoral",new IntakeCoral(m_coral,m_elevator));
     NamedCommands.registerCommand("spitCoral",new SpitCoral(m_coral,m_elevator));
     NamedCommands.registerCommand("elevatorUp", new elevatorUpAuton(m_elevator, 0.3));
     NamedCommands.registerCommand("elevatorUpFast", new elevatorUpFast(m_elevator, 0.6));

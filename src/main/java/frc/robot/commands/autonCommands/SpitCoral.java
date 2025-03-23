@@ -15,7 +15,7 @@ public class SpitCoral extends Command {
   /** Creates a new spitCoral. */
   private CoralSubsystem m_coral;
   private ElevatorSubsystem m_elevator;
-  //private double m_startTime;
+  private double m_startTime;
   private int coralThrough;
   public SpitCoral(CoralSubsystem coral,ElevatorSubsystem elevator) {
     m_coral = coral;
@@ -27,8 +27,13 @@ public class SpitCoral extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    coralThrough = 0;
-    //m_startTime = System.currentTimeMillis();
+    if(m_elevator.checkPhotoeye()) {
+      coralThrough = 1;
+    }
+    else {
+      coralThrough = 0;
+    }
+    m_startTime = System.currentTimeMillis();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -41,6 +46,7 @@ public class SpitCoral extends Command {
       coralThrough = 2;
     }
     m_coral.coralPlace(0.2);
+    System.out.println(coralThrough);
   }
 
   // Called once the command ends or is interrupted.
@@ -52,7 +58,6 @@ public class SpitCoral extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return coralThrough == 2;
-    //return System.currentTimeMillis()-m_startTime > Constants.NonChassis.millisToSpit;
+    return System.currentTimeMillis() - m_startTime > Constants.NonChassis.millisToSpit;
   }
 }

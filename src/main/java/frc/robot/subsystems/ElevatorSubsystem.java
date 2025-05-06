@@ -22,6 +22,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   public SparkMax elevatorMotor2 = new SparkMax(Constants.NonChassis.elevatorMotorID2, MotorType.kBrushless);
   private RelativeEncoder encoder1 = elevatorMotor1.getEncoder();
   private RelativeEncoder encoder2 = elevatorMotor2.getEncoder();
+  
   private int desiredPoint = 0;
   private boolean cooked;
   private double speed = 0.02;

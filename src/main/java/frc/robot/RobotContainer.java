@@ -1,6 +1,7 @@
 package frc.robot;
 
 import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.SimpleElevatorSubsystem;
 import frc.robot.commands.elevatorUp;
 import frc.robot.commands.elevatorUpFast;
 import frc.robot.commands.resetEncoder;
@@ -45,6 +46,7 @@ public class RobotContainer {
   CommandXboxController m_driverController = new CommandXboxController(Operator.kDriverControllerPort);
   DriveSubsystem m_drive;
   ElevatorSubsystem m_elevator;
+  SimpleElevatorSubsystem elevatorSubsystem;
   CoralSubsystem m_coral;
   //SensorSubsystem m_sensor;
   SendableChooser<Command> autoChooser;
@@ -53,6 +55,7 @@ public class RobotContainer {
 
     m_drive = new DriveSubsystem();
     m_elevator = new ElevatorSubsystem();
+    elevatorSubsystem = new SimpleElevatorSubsystem();
     m_coral = new CoralSubsystem();
     //m_sensor = new SensorSubsystem();
     NamedCommands.registerCommand("toL4", new goToPoint(m_elevator,3));
@@ -123,6 +126,11 @@ public class RobotContainer {
       // m_driverController.x().whileTrue(new coralReverseIntake(m_coral, -0.2));
       m_driverController.b().whileTrue(new coralReversePlace(m_coral, -0.1));
 
+      //CHANGED TO ADD SETPOINTS
+      m_driverController.a().whileTrue(elevatorSubsystem.moveToL2Command());
+      m_driverController.x().whileTrue(elevatorSubsystem.moveToL3Command());
+      m_driverController.y().whileTrue(elevatorSubsystem.moveToL4Command());
+;
       m_driverController.povUp().onTrue(new changePoint(m_elevator,1));
       m_driverController.povDown().onTrue(new changePoint(m_elevator,-1));
 
